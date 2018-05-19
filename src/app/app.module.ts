@@ -6,14 +6,24 @@ import { HttpModule } from '@angular/http';
 import { ClarityModule } from '@clr/angular';
 import { AppComponent } from './app.component';
 import { ROUTING } from "./app.routing";
-import { HomeComponent } from "./home/home.component";
-import { AboutComponent } from "./about/about.component";
+import { LoginComponent } from "./login/login.component";
+import { DashboardComponent } from "./dashboard/dashboard.component";
+import { ServersComponent } from "./servers/servers.component";
+import { QueriesComponent } from "./queries/queries.component";
+import { SyncsComponent } from "./syncs/syncs.component";
+import { SettingsComponent } from "./settings/settings.component";
+import { CrudlistComponent } from "./components/crudlist/crudlist.component";
 
 @NgModule({
     declarations: [
         AppComponent,
-        AboutComponent,
-        HomeComponent
+        LoginComponent,
+        ServersComponent,
+        QueriesComponent,
+        SyncsComponent,
+        DashboardComponent,
+        SettingsComponent,
+        CrudlistComponent  ,
     ],
     imports: [
         BrowserAnimationsModule,

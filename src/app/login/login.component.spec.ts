@@ -5,12 +5,12 @@
  */
 import { async, TestBed, ComponentFixture } from "@angular/core/testing";
 import { ClarityModule } from '@clr/angular';
-import { AboutComponent } from './about.component';
+import { LoginComponent } from './login.component';
 
 
-describe('AboutComponent', () => {
+describe('LoginComponent', () => {
 
-    let expectedMsg: string = 'This is a page to help demonstrate routing.';
+    let expectedMsg: string = 'Hostbeter.nl';
 
     let fixture: ComponentFixture<any>;
     let compiled: any;
@@ -18,14 +18,14 @@ describe('AboutComponent', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
             declarations: [
-                AboutComponent
+                LoginComponent
             ],
             imports: [
                 ClarityModule.forRoot()
             ]
         });
 
-        fixture = TestBed.createComponent(AboutComponent);
+        fixture = TestBed.createComponent(LoginComponent);
         fixture.detectChanges();
         compiled = fixture.nativeElement;
 
@@ -35,12 +35,12 @@ describe('AboutComponent', () => {
         fixture.destroy();
     });
 
-    it('should create the about page', async(() => {
+    it('should create the home page', async(() => {
         expect(compiled).toBeTruthy();
     }));
 
     it(`should display: "${expectedMsg}"`, async(() => {
-        expect(compiled.querySelector("p").textContent).toMatch(expectedMsg);
+        expect(compiled.querySelector(".welcome").textContent).toMatch(expectedMsg);
     }));
 
 
