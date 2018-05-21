@@ -8,7 +8,8 @@ import { of } from 'rxjs/observable/of';
 @Component({
     selector: "hb-crudlist",
     templateUrl: "./crudlist.component.html",
-    styleUrls: ["./crudlist.component.scss"]
+    styleUrls: ["./crudlist.component.scss"],
+    host: { class: 'clr-nav-level'}
 })
 
 export class CrudlistComponent implements OnInit {

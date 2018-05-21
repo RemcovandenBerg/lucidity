@@ -5,7 +5,8 @@ import { of } from "rxjs/observable/of";
 @Component({
     selector: "app-servers",
     templateUrl: "./servers.component.html",
-    styleUrls: ["./servers.component.scss"]
+    styleUrls: ["./servers.component.scss"],
+    host: { class: 'main-container' }
 })
 
 export class ServersComponent implements OnInit {

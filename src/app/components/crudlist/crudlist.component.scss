@@ -1,7 +1,3 @@
-// :host() {
-//     height: 100%;
-// }
-
-// :host-context() {
-//     height: 100%;
-// }
+:host() {
+    display: flex;
+}

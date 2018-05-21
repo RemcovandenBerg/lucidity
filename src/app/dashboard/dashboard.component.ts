@@ -8,6 +8,7 @@ import { Component } from "@angular/core";
 @Component({
     styleUrls: ['./dashboard.component.scss'],
     templateUrl: './dashboard.component.html',
+    host: { class: 'main-container' }
 })
 export class DashboardComponent {
 
