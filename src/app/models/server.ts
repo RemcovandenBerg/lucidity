@@ -1,5 +1,4 @@
 import { DatabaseType } from "./DatabaseType";
-import { hostname } from "os";
 
 export class Server {
 
