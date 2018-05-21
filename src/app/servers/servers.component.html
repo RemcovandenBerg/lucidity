@@ -1,12 +1,11 @@
+<div class="content-container">
+    <hb-crudlist (onNewItem)="newServer()" [navItems]="serverlist">
+    </hb-crudlist>
+    <div class="content-area">
+        <p>Create a new server/database combination</p>
 
-    <div class="content-container">
-        <hb-crudlist (onNewItem)="newServer()" [navItems]="serverlist">
-        </hb-crudlist>
-
-        <div class="content-area">
-            <H3>plesk 01</H3>
-            <p>This is a Clarity seed application. This is the default page that loads for the application.</p>
+        <app-server-details  *ngIf="!!selectedServer" [server]="selectedServer"></app-server-details>
 
 
-        </div>
     </div>
+</div>

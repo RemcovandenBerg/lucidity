@@ -13,17 +13,19 @@ import { QueriesComponent } from "./queries/queries.component";
 import { SyncsComponent } from "./syncs/syncs.component";
 import { SettingsComponent } from "./settings/settings.component";
 import { CrudlistComponent } from "./components/crudlist/crudlist.component";
+import { ServerDetailsComponent } from "./servers/server-details/server-details.component";
 
 @NgModule({
     declarations: [
         AppComponent,
         LoginComponent,
         ServersComponent,
+        ServerDetailsComponent,
         QueriesComponent,
         SyncsComponent,
         DashboardComponent,
         SettingsComponent,
-        CrudlistComponent  ,
+        CrudlistComponent ,
     ],
     imports: [
         BrowserAnimationsModule,

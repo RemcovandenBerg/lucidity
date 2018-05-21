@@ -1,4 +1,4 @@
 export class  CrudListViewItem {
     routerlink: string;
-    title: string;
+    name: string;
 }

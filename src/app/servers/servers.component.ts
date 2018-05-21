@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Observable } from "rxjs/Observable";
 import { of } from "rxjs/observable/of";
+import { Server } from "../models/server";
 
 @Component({
     selector: "app-servers",
@@ -12,9 +13,11 @@ import { of } from "rxjs/observable/of";
 export class ServersComponent implements OnInit {
 
     public serverlist = of( [
-        {routerlink: 'plesk01', title: 'plesk01.hosbeter.nl' },
-        {routerlink: 'plesk02', title: 'plesk02.hosbeter.nl' }
+        {routerlink: 'plesk01', name: 'plesk01.hosbeter.nl' },
+        {routerlink: 'plesk02', name: 'plesk02.hosbeter.nl' }
     ]);
+
+    public selectedServer: Server;
 
     constructor() {
 
@@ -28,6 +31,7 @@ export class ServersComponent implements OnInit {
     }
 
     public newServer(): void {
+        this.selectedServer = this.serverlist[0];
         alert('YOYO servertje');
     }
 
