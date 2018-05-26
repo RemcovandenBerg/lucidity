@@ -1,0 +1,12 @@
+<div class="content-container">
+    <hb-crudlist (onNewItem)="newServer()" [navItems]="serverlist" [linkBasePath]="servers/details" [linkIdPathProp]="name">
+    </hb-crudlist>
+    <div class="content-area">
+
+        <router-outlet></router-outlet>
+        {{!!selectedServer}}
+        <app-server-details  *ngIf="!!selectedServer" [server]="selectedServer"></app-server-details>
+
+
+    </div>
+</div>
