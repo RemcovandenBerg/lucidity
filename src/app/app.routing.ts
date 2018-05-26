@@ -11,12 +11,14 @@ import { LoginComponent } from './login/login.component';
 import { ServersComponent } from './servers/servers.component';
 import { QueriesComponent } from 'app/queries/queries.component';
 import { SyncsComponent } from './syncs/syncs.component';
+import { ServerDetailsComponent } from './servers/server-details/server-details.component';
 
 
 export const ROUTES: Routes = [
     {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
     {path: 'dashboard', component: DashboardComponent},
     {path: 'servers', component: ServersComponent},
+    {path: 'servers/details/:name', component: ServerDetailsComponent}
     {path: 'queries', component: QueriesComponent},
     {path: 'syncs', component: SyncsComponent},
     {path: 'settings', component: LoginComponent}

@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { Server } from "app/models/server";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: "app-server-details",
@@ -12,7 +13,7 @@ export class ServerDetailsComponent implements OnInit {
   @Input()
   server: Server;
 
-  constructor() {
+  constructor(private activatedRoute: ActivatedRoute) {
 
   }
 
