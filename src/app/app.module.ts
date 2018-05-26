@@ -6,14 +6,15 @@ import { HttpModule } from '@angular/http';
 import { ClarityModule } from '@clr/angular';
 import { AppComponent } from './app.component';
 import { ROUTING } from "./app.routing";
-import { LoginComponent } from "./login/login.component";
-import { DashboardComponent } from "./dashboard/dashboard.component";
-import { ServersComponent } from "./servers/servers.component";
-import { QueriesComponent } from "./queries/queries.component";
-import { SyncsComponent } from "./syncs/syncs.component";
-import { SettingsComponent } from "./settings/settings.component";
+import { LoginComponent } from "./screens/login/login.component";
+import { DashboardComponent } from "./screens/dashboard/dashboard.component";
+import { ServersComponent } from "./screens/servers/servers.component";
+import { QueriesComponent } from "./screens/queries/queries.component";
+import { SyncsComponent } from "./screens/syncs/syncs.component";
+import { SettingsComponent } from "./screens/settings/settings.component";
 import { CrudlistComponent } from "./components/crudlist/crudlist.component";
-import { ServerDetailsComponent } from "./servers/server-details/server-details.component";
+import { ServerDetailsComponent } from "./screens/servers/server-details/server-details.component";
+import { DataService } from "./data/data.service";
 
 @NgModule({
     declarations: [
