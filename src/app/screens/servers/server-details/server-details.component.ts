@@ -6,7 +6,8 @@ import { DataService } from "../../../data/data.service";
 @Component({
   selector: "app-server-details",
   templateUrl: "./server-details.component.html",
-  styleUrls: ["./server-details.component.scss"]
+  styleUrls: ["./server-details.component.scss"],
+  providers: [DataService]
 })
 
 export class ServerDetailsComponent implements OnInit {
@@ -16,8 +17,7 @@ export class ServerDetailsComponent implements OnInit {
 
   constructor(private activatedRoute: ActivatedRoute, srv: DataService) {
     activatedRoute.paramMap.subscribe(a => {
-      let nameParam = a.get('name');
-      this.server = srv.getServer(nameParam);
+      this.server = srv.getServer(a.get('name'));
     });
   }
 

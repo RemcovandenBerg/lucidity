@@ -16,23 +16,17 @@ export class ServersComponent implements OnInit {
 
     public serverlist: Observable<Server[]>;
 
-    public selectedServer: Server;
+    public editableServer: Server;
 
     constructor(private srv: DataService) {
-
+        this.serverlist = this.srv.getAllServers();
     }
 
     ngOnInit() {
-        this.serverlist = this.srv.getAllServers();
-        // this.serverlist = [
-        //     {routerlink: 'plesk01', title : 'plesk01.hosbeter.nl' },
-        //      {routerlink: 'plesk02', title : 'plesk02.hosbeter.nl' }
-        //  ];
     }
 
     public newServer(): void {
-        this.selectedServer = this.serverlist[0];
-        alert('YOYO servertje');
+        this.editableServer = new Server();
     }
 
 }

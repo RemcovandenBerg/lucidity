@@ -1,5 +1,8 @@
 <clr-vertical-nav>
     <a clrVerticalNavLink (click)="clickNew()" routerLinkActive="active"><clr-icon shape="new"></clr-icon> Nieuwe aanmaken</a>
-    <a *ngFor="let link of navItems | async" clrVerticalNavLink [routerLink]="link.routerLink" routerLinkActive="active">
-        <clr-icon shape="rack-server" class="is-solid"></clr-icon> {{link.name}}</a>
+
+    <a *ngFor="let link of navItems | async" clrVerticalNavLink [routerLink]="link.routerlink" routerLinkActive="active">
+        <clr-icon shape="rack-server" class="is-solid"></clr-icon> {{link.name}}
+    </a>
+
 </clr-vertical-nav>

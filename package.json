@@ -27,14 +27,14 @@
     "@webcomponents/custom-elements": "1.0.0",
     "core-js": "^2.5.6",
     "mutationobserver-shim": "^0.3.2",
-    "rxjs": "^5.5.10",
+    "rxjs": "^6.2.0",
+    "rxjs-compat": "^6.2.0",
     "ts-helpers": "^1.1.1",
     "web-animations-js": "^2.3.1",
     "zone.js": "^0.8.26"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.6.3",
-    "@angular/cli": "^6.0.3",
     "@angular/compiler-cli": "~5.0.0",
     "@schematics/angular": "^0.6.3",
     "@schematics/update": "^0.6.3",

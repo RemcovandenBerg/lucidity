@@ -14,17 +14,21 @@ export class DataService {
 
   serverlistmock: Server[] = [];
 
+  obs: any;
+
   constructor() {
     let servera = new Server();
     let serverb = new Server();
     servera.hostname = 'plesk12.hostbeter.nl';
     serverb.hostname = 'dev.hostbeter.com';
     this.serverlistmock = [servera, serverb];
+
+    this.obs = of(this.serverlistmock);
   }
 
 
   getAllServers(): Observable<Server[]> {
-    return of(this.serverlistmock);
+    return  this.obs ;
   }
   getServer(name: string): Server {
     if (!name)

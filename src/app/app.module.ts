@@ -19,14 +19,14 @@ import { DataService } from "./data/data.service";
 @NgModule({
     declarations: [
         AppComponent,
+        CrudlistComponent,
         LoginComponent,
         ServersComponent,
         ServerDetailsComponent,
         QueriesComponent,
         SyncsComponent,
         DashboardComponent,
-        SettingsComponent,
-        CrudlistComponent ,
+        SettingsComponent       
     ],
     imports: [
         BrowserAnimationsModule,

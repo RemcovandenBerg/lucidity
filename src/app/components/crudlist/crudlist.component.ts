@@ -3,7 +3,7 @@ import { CrudListViewItem } from "./CrudListViewItem";
 import { tick } from "@angular/core/testing";
 import { Observable } from "rxjs/Observable";
 import { of } from 'rxjs/observable/of';
-import { tap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { Router } from "@angular/router";
 
 
@@ -26,12 +26,8 @@ export class CrudlistComponent implements OnInit {
     public linkBasePath: string;
 
     private buildRouterLink(item: Object): string {
-        return this.linkBasePath + item[this.linkIdPathProp];
+        return this.linkBasePath + '/' + encodeURIComponent(item[this.linkIdPathProp]);
     }
-
-    // private clickLink(item: Object): void {
-    //     this.router.navigate([this.linkBasePath,]);
-    // }
 
     @Output()
     public onNewItem: EventEmitter<void> = new EventEmitter<void>();
@@ -41,11 +37,11 @@ export class CrudlistComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.navItems.pipe(tap((items: CrudListViewItem[]) => {
-            // tslint:disable-next-line:no-debugger
-            debugger;
-            items.forEach(a => a.routerlink = this.buildRouterLink(a));
-        }));
+        this.navItems = this.navItems.pipe(map(
+            (items: CrudListViewItem[]) => items.map(a => {
+                a.routerlink = this.buildRouterLink(a); 
+                return a;
+            })));
     }
 
     clickNew(): void {

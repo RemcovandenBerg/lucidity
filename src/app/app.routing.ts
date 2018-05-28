@@ -15,13 +15,18 @@ import { ServerDetailsComponent } from './screens/servers/server-details/server-
 
 
 export const ROUTES: Routes = [
-    {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
-    {path: 'dashboard', component: DashboardComponent},
-    {path: 'servers', component: ServersComponent},
-    {path: 'servers/details/:name', component: ServerDetailsComponent},
-    {path: 'queries', component: QueriesComponent},
-    {path: 'syncs', component: SyncsComponent},
-    {path: 'settings', component: LoginComponent}
+    { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+    { path: 'dashboard', component: DashboardComponent },
+    {
+        path: 'servers', component: ServersComponent,
+        children: [
+            { path: 'details/:name', component: ServerDetailsComponent }
+        ]
+    },
+
+    { path: 'queries', component: QueriesComponent },
+    { path: 'syncs', component: SyncsComponent },
+    { path: 'settings', component: LoginComponent }
 ]; // straks apart
 
 export const ROUTING: ModuleWithProviders = RouterModule.forRoot(ROUTES);
