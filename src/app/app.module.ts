@@ -16,6 +16,8 @@ import { CrudlistComponent } from "./components/crudlist/crudlist.component";
 import { ServerDetailsComponent } from "./screens/servers/server-details/server-details.component";
 import { DataService } from "./data/data.service";
 import { EditableServerDetailsComponent } from "./screens/servers/editable-server-details/editable-server-details.component";
+// dotnet toevoegen
+/* https://docs.microsoft.com/en-us/aspnet/core/spa/angular?view=aspnetcore-2.0&tabs=netcore-cli */
 
 @NgModule({
     declarations: [
@@ -28,7 +30,7 @@ import { EditableServerDetailsComponent } from "./screens/servers/editable-serve
         QueriesComponent,
         SyncsComponent,
         DashboardComponent,
-        SettingsComponent       
+        SettingsComponent
     ],
     imports: [
         BrowserAnimationsModule,
