@@ -23,6 +23,9 @@ export class CrudlistComponent implements OnInit {
     public linkIdPathProp: string;
 
     @Input()
+    public iconShape: string;
+
+    @Input()
     public linkBasePath: string;
 
     private buildRouterLink(item: Object): string {

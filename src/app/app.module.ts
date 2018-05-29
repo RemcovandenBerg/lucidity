@@ -15,6 +15,7 @@ import { SettingsComponent } from "./screens/settings/settings.component";
 import { CrudlistComponent } from "./components/crudlist/crudlist.component";
 import { ServerDetailsComponent } from "./screens/servers/server-details/server-details.component";
 import { DataService } from "./data/data.service";
+import { EditableServerDetailsComponent } from "./screens/servers/editable-server-details/editable-server-details.component";
 
 @NgModule({
     declarations: [
@@ -23,6 +24,7 @@ import { DataService } from "./data/data.service";
         LoginComponent,
         ServersComponent,
         ServerDetailsComponent,
+        EditableServerDetailsComponent,
         QueriesComponent,
         SyncsComponent,
         DashboardComponent,
