@@ -31,12 +31,17 @@ namespace lucidity
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             app.UseDefaultFiles();
-            app.UseStaticFiles();
+            
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions
+                {
+                    HotModuleReplacement = true
+                });
             }
 
+            app.UseStaticFiles();
             app.UseMvc();
 
             app.Use( async(context, next) => 

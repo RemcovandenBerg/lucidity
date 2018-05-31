@@ -1,4 +1,4 @@
-![Hostbeter.nl](src/images/hostbeter.png)
+![Hostbeter.nl](client/src/images/hostbeter.png)
 
 Lucidity
 ============
