@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.SpaServices.Webpack;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -48,7 +49,7 @@ namespace lucidity
             {
                 await next();
                 if (context.Response.StatusCode == 404 && !Path.HasExtension(
-                    context.Request.Path.Value) && !context.Request.Path.StartsWithSegments("api"))
+                    context.Request.Path.Value) && !context.Request.Path.StartsWithSegments("/api"))
                     {
                         context.Request.Path = "/index.html";
                         context.Response.StatusCode = 200;
