@@ -1,0 +1,11 @@
+<div class="content-container">
+    <hb-crudlist (onNewItem)="newServer()" [navItems]="serverlist" [linkBasePath]="'details'" [linkIdPathProp]="'name'" [iconShape]="'rack-server'">
+    </hb-crudlist>
+    <div class="content-area">
+        <!-- view -->
+        <router-outlet *ngIf="!editableServer"></router-outlet>
+        <!-- edit -->
+        <app-editable-server-details  *ngIf="!!editableServer" [server]="editableServer"></app-editable-server-details>
+        
+    </div>
+</div>

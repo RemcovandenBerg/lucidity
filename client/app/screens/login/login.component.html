@@ -1,0 +1,37 @@
+
+<!-- <clr-dropdown>
+    <button clrDropdownTrigger class="btn">
+        Dropdown
+        <clr-icon shape="caret down"></clr-icon>
+    </button>
+    <clr-dropdown-menu *clrIfOpen clrPosition="bottom-right">
+        <a clrDropdownItem href="javascript://">Action 1</a>
+        <a clrDropdownItem href="javascript://">Action 2</a>
+        <div class="dropdown-divider"></div>
+        <a clrDropdownItem href="javascript://">Link 1</a>
+        <a clrDropdownItem href="javascript://">Link 2</a>
+    </clr-dropdown-menu>
+</clr-dropdown> -->
+ <div class="login-wrapper">
+    <form class="login" #loginForm="ngForm" >
+        <label class="title">
+            <h3 class="welcome">Admin panel</h3>
+            Hostbeter.nl
+            <h5 class="hint">Synchronizing</h5>
+        </label>
+        <div class="login-group">
+            <input class="username" type="text" #username id="login_username" placeholder="e-mailadres">
+            <input class="password" type="password" #password id="login_password" placeholder="Wachtwoord">
+            <div class="checkbox">
+                <input type="checkbox" id="rememberme" #remember>
+                <label for="rememberme">
+                    Onthoud mij
+                </label>
+            </div>
+            <div class="error active" *ngIf="loginForm.dirty && loginForm.invalid">
+                Onbekende gebruikersnaam of wachtwoord
+            </div>
+            <button type="submit" class="btn btn-primary" (click)="onSubmit()">Inloggen</button>
+        </div>
+    </form>
+</div>
