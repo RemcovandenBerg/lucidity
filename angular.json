@@ -12,7 +12,7 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "dist",
-            "index": "index.html",
+            "index": "client/index.html",
             "main": "client/main.ts",
             "tsConfig": "client/tsconfig.json",
             "assets": [
