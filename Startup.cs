@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using System;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
@@ -59,9 +60,11 @@ namespace lucidity
                 // see https://go.microsoft.com/fwlink/?linkid=864501
 
                 spa.Options.SourcePath = "client";
-
+               
+                spa.UseAngularCliServer(npmScript: "start");
                 if (env.IsDevelopment())
                 {
+                    Console.WriteLine("Jojo DEV MODE REACHED!!!!!!!!!!! *** NANABBABABAN ABGANG!!! ");
                     spa.UseAngularCliServer(npmScript: "start");
                 }
             });
