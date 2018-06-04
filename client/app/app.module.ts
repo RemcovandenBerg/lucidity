@@ -2,7 +2,6 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
 import { ClarityModule } from '@clr/angular';
 import { AppComponent } from './app.component';
 import { ROUTING } from "./app.routing";
@@ -16,6 +15,7 @@ import { CrudlistComponent } from "./components/crudlist/crudlist.component";
 import { ServerDetailsComponent } from "./screens/servers/server-details/server-details.component";
 import { DataService } from "./data/data.service";
 import { EditableServerDetailsComponent } from "./screens/servers/editable-server-details/editable-server-details.component";
+import { HttpClientModule } from "@angular/common/http";
 // dotnet toevoegen
 // https://dustinewers.com/angular-cli-with-net-core/
 /* https://docs.microsoft.com/en-us/aspnet/core/spa/angular?view=aspnetcore-2.0&tabs=netcore-cli */
@@ -37,7 +37,7 @@ import { EditableServerDetailsComponent } from "./screens/servers/editable-serve
         BrowserAnimationsModule,
         BrowserModule,
         FormsModule,
-        HttpModule,
+        HttpClientModule,
         ClarityModule,
         ROUTING
     ],
