@@ -6,3 +6,7 @@
 a {
     cursor: pointer;
 }
+
+body {
+    background: #044d6e; /*github main bar ms*/
+}
