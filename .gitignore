@@ -1,6 +1,7 @@
 coverage/
 dist/
 obj/
+Obj/
 wwwroot/
 html-report/
 node_modules/
