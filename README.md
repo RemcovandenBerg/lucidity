@@ -7,3 +7,6 @@ This is a simple UI and task runner for time based data synchronization. Running
 - queries
 - syncs (scheduled from server to server query execution)
 
+
+Roadmap later on:
+ - async await stuff
