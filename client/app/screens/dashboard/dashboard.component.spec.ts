@@ -9,9 +9,9 @@ import { DashboardComponent } from "./dashboard.component";
 
 
 
-describe('HomeComponent', () => {
+describe('DashboardComponent', () => {
 
-    let expectedMsg: string = 'This is a Clarity seed application. This is the default page that loads for the application.';
+    let expectedMsg: string = 'nothing to show you yet';
 
     let fixture: ComponentFixture<any>;
     let compiled: any;
@@ -40,8 +40,10 @@ describe('HomeComponent', () => {
         expect(compiled).toBeTruthy();
     }));
 
-    it(`should display: "${expectedMsg}"`, async(() => {
-        expect(compiled.querySelector("p").textContent).toMatch(expectedMsg);
+    it(`should contain: "${expectedMsg}"`, async(() => {
+        let allp = '';
+        compiled.querySelectorAll("p").forEach(a=> allp += a.textContent);
+        expect(allp).toContain(expectedMsg);
     }));
 
 
