@@ -9,7 +9,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './screens/dashboard/dashboard.component';
 import { LoginComponent } from './screens/login/login.component';
 import { ServersComponent } from './screens/servers/servers.component';
-import { QueriesComponent } from 'app/screens/queries/queries.component';
+import { QueriesComponent } from './screens/queries/queries.component';
 import { SyncsComponent } from './screens/syncs/syncs.component';
 import { ServerDetailsComponent } from './screens/servers/server-details/server-details.component';
 

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from "@angular/core";
-import { Server } from "app/models/server";
+import { Server } from "client/app/models/server";
 import { ActivatedRoute } from "@angular/router";
 import { DataService } from "../../../data/data.service";
 

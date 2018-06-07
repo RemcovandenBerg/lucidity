@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from "@angular/core";
-import { Server } from "app/models/server";
+import { Server } from "client/app/models/server";
 
 @Component({
   selector: "app-editable-server-details",
@@ -8,11 +8,11 @@ import { Server } from "app/models/server";
 })
 
 export class EditableServerDetailsComponent implements OnInit {
-  
+
   @Input()
   public server: Server;
 
-  constructor() { 
+  constructor() {
 
   }
 

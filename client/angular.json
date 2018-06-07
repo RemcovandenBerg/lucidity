@@ -14,7 +14,7 @@
             "outputPath": "../dist",
             "index": "./index.html",
             "main": "./main.ts",
-            "tsConfig": "./tsconfig.json",
+            "tsConfig": "./../tsconfig.json",
             "assets": [
               "./images",
               "./favicon.ico"
@@ -74,7 +74,7 @@
           "options": {
             "main": "test.ts",
             "karmaConfig": "./karma.conf.js",
-            "tsConfig": "./tsconfig.json",
+            "tsConfig": "./../tsconfig.json",
             "scripts": [
               "./../node_modules/core-js/client/shim.min.js",
               "./../node_modules/mutationobserver-shim/dist/mutationobserver.min.js",
