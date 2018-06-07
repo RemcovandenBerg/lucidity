@@ -11,6 +11,7 @@ describe("CrudlistComponent", () => {
   let fixture: ComponentFixture<CrudlistComponent>;
   let component: CrudlistComponent;
   beforeEach(() => {
+    
     TestBed.configureTestingModule({
       schemas: [NO_ERRORS_SCHEMA],
       providers: [

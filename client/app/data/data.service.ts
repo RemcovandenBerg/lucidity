@@ -4,9 +4,9 @@ import { Observable } from "rxjs/Observable";
 import { DatabaseType } from "../models/DatabaseType";
 import { HttpClient } from '@angular/common/http';
 import { map } from "rxjs/operators";
-import { Server } from "../models/server";
-import { Query } from "client/app/models/Query";
-import { Sync } from "client/app/models/Sync";
+import { Server } from "../models/Server";
+import { Query } from "../models/Query";
+import { Sync } from "../models/Sync";
 
 /**
  * @description

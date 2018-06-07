@@ -6,11 +6,12 @@
 import { async, TestBed, ComponentFixture } from "@angular/core/testing";
 import { ClarityModule } from '@clr/angular';
 import { LoginComponent } from './login.component';
+import { FormsModule } from "@angular/forms";
 
 
 describe('LoginComponent', () => {
 
-    let expectedMsg: string = 'Hostbeter.nl';
+    let expectedMsg: string = 'Admin panel';
 
     let fixture: ComponentFixture<any>;
     let compiled: any;
@@ -21,6 +22,7 @@ describe('LoginComponent', () => {
                 LoginComponent
             ],
             imports: [
+                FormsModule,
                 ClarityModule.forRoot()
             ]
         });

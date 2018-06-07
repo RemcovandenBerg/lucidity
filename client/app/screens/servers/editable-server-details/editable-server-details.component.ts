@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from "@angular/core";
-import { Server } from "client/app/models/server";
+import { Server } from "client/app/models/Server";
 
 @Component({
   selector: "app-editable-server-details",

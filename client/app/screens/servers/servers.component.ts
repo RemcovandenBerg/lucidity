@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Observable } from "rxjs/Observable";
 import { of } from "rxjs/observable/of";
-import { Server } from "../../models/server";
+import { Server } from "../../models/Server";
 import { DataService } from "../../data/data.service";
 
 @Component({
