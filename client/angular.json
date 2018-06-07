@@ -1,35 +1,35 @@
 {
   "$schema": "./../node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
-  "newProjectRoot": "projects",
+  "newProjectRoot": "",
   "projects": {
     "data-syncer": {
-      "root": "",
-      "sourceRoot": "",
+      "root": "./",
+      "sourceRoot": "./",
       "projectType": "application",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist",
-            "index": "index.html",
-            "main": "main.ts",
-            "tsConfig": "tsconfig.json",
+            "outputPath": "../dist",
+            "index": "./index.html",
+            "main": "./main.ts",
+            "tsConfig": "./tsconfig.json",
             "assets": [
-              "images",
-              "favicon.ico"
+              "./images",
+              "./favicon.ico"
             ],
             "styles": [
-              "node_modules/@clr/icons/clr-icons.min.css",
-              "node_modules/@clr/ui/clr-ui.min.css",
-              "styles.css"
+              "./../node_modules/@clr/icons/clr-icons.min.css",
+              "./../node_modules/@clr/ui/clr-ui.min.css",
+              "./styles.css"
             ],
             "scripts": [
-              "node_modules/core-js/client/shim.min.js",
-              "node_modules/mutationobserver-shim/dist/mutationobserver.min.js",
-              "node_modules/@webcomponents/custom-elements/custom-elements.min.js",
-              "node_modules/@clr/icons/clr-icons.min.js",
-              "node_modules/web-animations-js/web-animations.min.js"
+              "./../node_modules/core-js/client/shim.min.js",
+              "./../node_modules/mutationobserver-shim/dist/mutationobserver.min.js",
+              "./../node_modules/@webcomponents/custom-elements/custom-elements.min.js",
+              "./../node_modules/@clr/icons/clr-icons.min.js",
+              "./../node_modules/web-animations-js/web-animations.min.js"
             ]
           },
           "configurations": {
@@ -74,21 +74,22 @@
           "options": {
             "main": "test.ts",
             "karmaConfig": "./karma.conf.js",
+            "tsConfig": "./tsconfig.json",
             "scripts": [
-              "node_modules/core-js/client/shim.min.js",
-              "node_modules/mutationobserver-shim/dist/mutationobserver.min.js",
-              "node_modules/@webcomponents/custom-elements/custom-elements.min.js",
-              "node_modules/@clr/icons/clr-icons.min.js",
-              "node_modules/web-animations-js/web-animations.min.js"
+              "./../node_modules/core-js/client/shim.min.js",
+              "./../node_modules/mutationobserver-shim/dist/mutationobserver.min.js",
+              "./../node_modules/@webcomponents/custom-elements/custom-elements.min.js",
+              "./../node_modules/@clr/icons/clr-icons.min.js",
+              "./../node_modules/web-animations-js/web-animations.min.js"
             ],
             "styles": [
-              "node_modules/@clr/icons/clr-icons.min.css",
-              "node_modules/@clr/ui/clr-ui.min.css",
-              "styles.css"
+              "./../node_modules/@clr/icons/clr-icons.min.css",
+              "./../node_modules/@clr/ui/clr-ui.min.css",
+              "./styles.css"
             ],
             "assets": [
-              "images",
-              "favicon.ico"
+              "./images/",
+              "./favicon.ico"
             ]
           }
         },
@@ -126,7 +127,7 @@
   "defaultProject": "data-syncer",
   "schematics": {
     "@schematics/angular:component": {
-      "prefix": "app",
+      "prefix": "lucid",
       "styleext": "scss"
     },
     "@schematics/angular:directive": {

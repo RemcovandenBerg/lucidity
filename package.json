@@ -5,12 +5,12 @@
   "angular-cli": {},
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --aot",
-    "build": "ng build --extract-css",
+    "start": "cd client && ng serve --aot",
+    "build": "cd client && ng build  --extract-css",
     "build:ssr": "npm run build -- --app=ssr --output-hashing=media",
-    "test": "ng test",
-    "lint": "ng lint",
-    "e2e": "ng e2e"
+    "test": "cd client && ng test",
+    "lint": "cd client && ng lint",
+    "e2e": "cd client && ng e2e"
   },
   "private": true,
   "dependencies": {
