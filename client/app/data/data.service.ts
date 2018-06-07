@@ -21,34 +21,33 @@ export class DataService {
   }
 
   getAllServers(): Observable<Server[]> {
-    return this.http.get('/api/servers').pipe( map( (obj: any[]) => obj.map( (s) => {
-      let sr = new Server();
-      Object.assign(sr, s);
-      return sr;
-    })));
+    return this.http.get('/api/servers')
+      .pipe( map( (obj: any[]) => obj.map( (s) => {
+        let sr = new Server();
+        Object.assign(sr, s);
+        return sr;
+      })));
   }
-  getServer(name: string): Server {
-    if (!name)
-      return null;
-    return new Server();
-   // return this.serverlistmock.find(a => a.name === name);
+
+  getServer(id: string): Observable<Server> {
+    return this.http.get('/api/servers/'+ encodeURIComponent(id))
+      .pipe(map( obj=> Object.assign(new Server(), obj) )) as Observable<Server>;
   }
 
   getAllQueries(): Observable<Query[]> {
     return this.http.get('/api/queries') as Observable<Query[]>;
   }
 
-  getQuery(id: number) {
-      return this.http.get('/api/queries/' + encodeURIComponent('' + id)) as Observable<Query>;
+  getQuery(id: string) {
+      return this.http.get('/api/queries/' + encodeURIComponent(id)) as Observable<Query>;
   }
 
   getAllSyncs(): Observable<Sync[]> {
     return this.http.get('/api/syncs') as Observable<Sync[]>;
   }
 
-  getSync(id: number) {
-      return this.http.get('/api/syncs/' + encodeURIComponent('' + id)) as Observable<Sync>;
+  getSync(id: string) {
+      return this.http.get('/api/syncs/' + encodeURIComponent(id)) as Observable<Sync>;
   }
-
 
 }

@@ -1,12 +1,13 @@
 <div class="content-container">
-    <hb-crudlist (onNewItem)="newServer()" [navItems]="serverlist" [linkBasePath]="'details'" [linkIdPathProp]="'name'" [iconShape]="'rack-server'">
+    <hb-crudlist (onNewItem)="newServer()" 
+        [entityName]="'Database'"
+        [linkDescriptionPathProp]="'name'"
+        [navItems]="serverlist" 
+        [linkBasePath]="'details'"
+        [linkIdPathProp]="'id'" 
+        [iconShape]="'rack-server'">
     </hb-crudlist>
     <div class="content-area">
-        <h2>Database server</h2>
-        <!-- view -->
-        <router-outlet *ngIf="!editableServer"></router-outlet>
-        <!-- edit -->
-        <app-editable-server-details  *ngIf="!!editableServer" [server]="editableServer"></app-editable-server-details>
-        
+        <router-outlet></router-outlet>
     </div>
 </div>

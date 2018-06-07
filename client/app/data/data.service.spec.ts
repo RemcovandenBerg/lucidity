@@ -17,9 +17,25 @@ describe("DataService", () => {
   });
 
   it("should be able to create service instance",  inject(
-    [HttpTestingController, DataService],  
-     (httpMock: HttpTestingController, dataService: DataService ) => {
-    expect(service).toBeDefined();
+    [HttpTestingController],  
+     (httpMock: HttpTestingController) => {
+      expect(service).toBeDefined();
   }));
 
-});
+  it('should call server api', inject(
+    [HttpTestingController, DataService],  
+     (httpMock: HttpTestingController) => {
+      
+      service.getAllServers().subscribe();
+      httpMock.expectOne('/api/servers');
+  }));
+
+  it('should call server api', inject(
+    [HttpTestingController, DataService],  
+     (httpMock: HttpTestingController) => {
+     service.getServer('hello').subscribe();
+
+     httpMock.expectOne('/api/servers/hello');
+  }));
+
+  });

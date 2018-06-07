@@ -12,6 +12,7 @@ import { ServersComponent } from './screens/servers/servers.component';
 import { QueriesComponent } from './screens/queries/queries.component';
 import { SyncsComponent } from './screens/syncs/syncs.component';
 import { ServerDetailsComponent } from './screens/servers/server-details/server-details.component';
+import { EditableServerDetailsComponent } from './screens/servers/editable-server-details/editable-server-details.component';
 
 
 export const ROUTES: Routes = [
@@ -20,7 +21,8 @@ export const ROUTES: Routes = [
     {
         path: 'servers', component: ServersComponent,
         children: [
-            { path: 'details/:name', component: ServerDetailsComponent }
+            { path: 'details/:id', component: ServerDetailsComponent },
+            { path: 'details/:id/edit', component: EditableServerDetailsComponent }
         ]
     },
 

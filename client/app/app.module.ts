@@ -16,6 +16,7 @@ import { ServerDetailsComponent } from "./screens/servers/server-details/server-
 import { DataService } from "./data/data.service";
 import { EditableServerDetailsComponent } from "./screens/servers/editable-server-details/editable-server-details.component";
 import { HttpClientModule } from "@angular/common/http";
+import { LowerCasePipe } from "@angular/common";
 // dotnet toevoegen
 // https://dustinewers.com/angular-cli-with-net-core/
 /* https://docs.microsoft.com/en-us/aspnet/core/spa/angular?view=aspnetcore-2.0&tabs=netcore-cli */

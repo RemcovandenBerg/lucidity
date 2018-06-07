@@ -16,14 +16,16 @@ namespace lucidity.Controllers
         public ServersController(DataContext dataContext)
         {
             _dataContext = dataContext;
-
         }
 
         [HttpGet]
         public IEnumerable<Server> Get(){
-         //   using(var ctx = new DataContext()){
-                return _dataContext.Servers.ToList();
-           // }
+            return _dataContext.Servers.ToList();
+        }
+
+        [HttpGet("{id:int}")]
+        public Server Get(int id){
+            return _dataContext.Servers.Find(id);
         }
     }
 }

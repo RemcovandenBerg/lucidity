@@ -11,10 +11,10 @@ import { of } from "rxjs/observable/of";
 
 class MyMockDataService {
 
-  getServer(name: string): Observable<Server> {
+  getServer(id: string): Observable<Server> {
     let s =  new Server();  
     s.hostname = "remco";
-    this.paramUsed = name;
+    this.paramUsed = id;
     return of(s);
   }
 
@@ -32,7 +32,7 @@ describe("ServerDetailsComponent", () => {
       declarations: [ServerDetailsComponent],
       providers: [
         { provide: ActivatedRoute, useValue: {  paramMap: 
-          of(convertToParamMap({ name: "testbedserveres.com"} )) }}]
+          of(convertToParamMap({ id: "testbedserveres.com"} )) }}]
     });
 
     //apart want in de array werkt dit niet?

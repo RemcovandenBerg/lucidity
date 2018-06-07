@@ -5,6 +5,7 @@ import { Observable } from "rxjs/Observable";
 import { of } from 'rxjs/observable/of';
 import { map } from 'rxjs/operators';
 import { Router } from "@angular/router";
+import { LowerCasePipe } from "@angular/common";
 
 
 @Component({
@@ -15,6 +16,12 @@ import { Router } from "@angular/router";
 })
 
 export class CrudlistComponent implements OnInit {
+    
+    @Input()
+    public linkDescriptionPathProp: string;
+
+    @Input()
+    public entityName: string;
 
     @Input()
     public navItems: Observable<CrudListViewItem[]>;
@@ -48,6 +55,7 @@ export class CrudlistComponent implements OnInit {
     }
 
     clickNew(): void {
+        this.router.navigate(['servers',this.linkBasePath, 0, 'edit']);
         this.onNewItem.emit();
     }
 }

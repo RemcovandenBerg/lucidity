@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { Server } from "client/app/models/Server";
+import { ActivatedRoute } from "@angular/router";
+import { DataService } from "../../../data/data.service";
 
 @Component({
   selector: "app-editable-server-details",
@@ -10,13 +12,28 @@ import { Server } from "client/app/models/Server";
 export class EditableServerDetailsComponent implements OnInit {
 
   @Input()
-  public server: Server;
+  server: Server;
 
-  constructor() {
-
+  constructor(private activatedRoute: ActivatedRoute, service: DataService) {
+    activatedRoute.paramMap.subscribe(a => {
+      let id = a.get('id');
+      if (id === "0")
+        this.server = new Server(); //new create
+      else 
+        service.getServer(a.get('id')).subscribe( s=> this.server = s);
+    });
   }
 
   ngOnInit() {
+
+  }
+
+  public onSave(){
+    //iets emitten en opslaan etc/
+  }
+  
+  public onCancel(){
+    window.history.back(1);
 
   }
 }
