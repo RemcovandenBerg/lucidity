@@ -1,7 +1,9 @@
+import { ActivatedRoute } from "@angular/router";
+import { FormControl } from '@angular/forms';
 import { Component, OnInit, Input } from "@angular/core";
 import { Server } from "client/app/models/Server";
-import { ActivatedRoute } from "@angular/router";
 import { DataService } from "../../../data/data.service";
+
 
 @Component({
   selector: "app-editable-server-details",
@@ -33,7 +35,7 @@ export class EditableServerDetailsComponent implements OnInit {
   }
   
   public onCancel(){
-    window.history.back(1);
+    window.history.back();
 
   }
 }

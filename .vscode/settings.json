@@ -15,5 +15,8 @@
         "**/.git/subtree-cache/**": true,
         "**/node_modules/**": true,
         "**/obj": true
-    }
+    },
+    "terminal.integrated.env.windows": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+    },
 }
