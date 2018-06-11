@@ -17,9 +17,8 @@ export class ServerDetailsComponent implements OnInit {
 
   constructor(private activatedRoute: ActivatedRoute) {
       activatedRoute.data.subscribe( data => this.server = data.server  );
-    
     // activatedRoute.paramMap.subscribe(a => {
-    //   service.getServer(a.get('id')).subscribe(s => 
+    //   service.getServer(a.get('id')).subscribe(s =>
     //     this.server = s);
     // });
   }

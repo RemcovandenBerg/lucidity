@@ -12,7 +12,7 @@ import { of } from "rxjs/observable/of";
 class MyMockDataService {
 
   getServer(id: string): Observable<Server> {
-    let s =  new Server();  
+    let s =  new Server();
     s.hostname = "remco";
     this.paramUsed = id;
     return of(s);
@@ -27,18 +27,21 @@ describe("ServerDetailsComponent", () => {
   let component: ServerDetailsComponent;
 
   beforeEach(() => {
+
+    let server = {server: new Server() };
+    server.server.hostname = 'testbedserveres.com';
+
     TestBed.configureTestingModule({
       schemas: [NO_ERRORS_SCHEMA],
       declarations: [ServerDetailsComponent],
       providers: [
-        { provide: ActivatedRoute, useValue: {  paramMap: 
-          of(convertToParamMap({ id: "testbedserveres.com"} )) }}]
+        { provide: ActivatedRoute, useValue: {  data: of(server) } }]
     });
 
-    //apart want in de array werkt dit niet?
-    TestBed.overrideProvider( DataService, { useValue: mockds} );
+    // apart want in de array werkt dit niet?
+   // TestBed.overrideProvider( DataService, { useValue: mockds} );
 
-    fixture = TestBed.createComponent(ServerDetailsComponent);  
+    fixture = TestBed.createComponent(ServerDetailsComponent);
     component = fixture.componentInstance;
   });
 
@@ -46,8 +49,8 @@ describe("ServerDetailsComponent", () => {
     expect(component).toBeDefined();
   });
 
-  it("should call server from route", () => {
-    expect(mockds.paramUsed).toBe("testbedserveres.com");
+  it("inited with server resolved server", () => {
+    expect(component.server.hostname).toBe("testbedserveres.com");
   });
 
 });
