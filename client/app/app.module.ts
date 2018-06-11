@@ -17,9 +17,7 @@ import { DataService } from "./data/data.service";
 import { EditableServerDetailsComponent } from "./screens/servers/editable-server-details/editable-server-details.component";
 import { HttpClientModule } from "@angular/common/http";
 import { LowerCasePipe } from "@angular/common";
-// dotnet toevoegen
-// https://dustinewers.com/angular-cli-with-net-core/
-/* https://docs.microsoft.com/en-us/aspnet/core/spa/angular?view=aspnetcore-2.0&tabs=netcore-cli */
+import { DataResolver } from "./data/DataResolver";
 
 @NgModule({
     declarations: [
@@ -42,8 +40,9 @@ import { LowerCasePipe } from "@angular/common";
         HttpClientModule,
         ClarityModule,
         ROUTING
+        
     ],
-    providers: [],
+    providers: [DataService, DataResolver],
     bootstrap: [AppComponent]
 })
 export class AppModule {
