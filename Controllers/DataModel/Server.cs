@@ -17,6 +17,7 @@ namespace lucidity.Controllers
         public DatabaseType Type { get; set; }
 
         [Timestamp]
+        [ConcurrencyCheck]
         public byte[] RowVersion { get; set; }
     }
 }

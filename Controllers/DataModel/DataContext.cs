@@ -5,13 +5,15 @@ public class DataContext : DbContext
 {
     public DataContext(DbContextOptions options) : base(options)
     {
+
     }
 
-    protected DataContext()
+    protected DataContext(): this(null)
     {
+
     }
 
-    
+
     public DbSet<Server> Servers { get; set; }
 
     public DbSet<Query> Queries { get; set; }

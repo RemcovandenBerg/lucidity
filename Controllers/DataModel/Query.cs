@@ -10,6 +10,8 @@ public class Query
     public string Text { get; set; }
 
     [Timestamp]
+    [ConcurrencyCheck]
+
     public byte[] RowVersion { get; set; }
 
 }

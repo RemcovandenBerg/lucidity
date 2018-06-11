@@ -9,7 +9,8 @@ public class Sync
 
     public int Id { get; set; }
 
-    
+
     [Timestamp]
+    [ConcurrencyCheck]
     public byte[] RowVersion { get; set; }
 }

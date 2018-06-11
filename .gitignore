@@ -12,7 +12,7 @@ typings/
 
 .DS_Store
 .npmrc
-
+appsettings.Development.json
 appsettings*
 
 ## Ignore Visual Studio temporary files, build results, and
