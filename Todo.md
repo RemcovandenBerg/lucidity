@@ -8,9 +8,9 @@ For now:
  - developing standardized CRUD components
    
     + transpose with `<ng-content></ng-content>`
- - implement Queries
- - implement Syncs
- - 
+    - implement Queries
+    - implement Syncs
+    - 
 
  
 Considered:

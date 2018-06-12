@@ -16,13 +16,13 @@ export class EditableServerDetailsComponent implements OnInit {
   @Input()
   server: Server;
 
-  constructor(private activatedRoute: ActivatedRoute, service: DataService) {
+  constructor(private activatedRoute: ActivatedRoute, service: DataService<Server>) {
     activatedRoute.paramMap.subscribe(a => {
       let id = a.get('id');
       if (id === "0")
         this.server = new Server(); //new create
       else 
-        service.getServer(a.get('id')).subscribe( s=> this.server = s);
+        service.getServer(a.get('id')).subscribe( s => this.server = s);
     });
   }
 
@@ -36,6 +36,5 @@ export class EditableServerDetailsComponent implements OnInit {
   
   public onCancel(){
     window.history.back();
-
   }
 }
