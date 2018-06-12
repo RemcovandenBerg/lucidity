@@ -14,11 +14,30 @@ import { Sync } from "../models/Sync";
  */
 
 @Injectable()
-export class DataService {
+export class DataService<T> {
+  
+  private myApi: string;
 
   constructor(private http: HttpClient) {
-   //
+
+    this.myApi = this.buildMyApi<T>();
   }
+
+  get<T>(id: any): Observable<T> {
+    return this.http.get(this.buildGetSingle<T>(id)) as Observable<T>;
+  }
+
+  private buildMyApi<T>(): string {
+    let a: T;
+    return (a.constructor.toString() + 's').toLowerCase();
+  }
+
+  private buildGetSingle<T>(id: any): string {
+    let a:T;
+    return '/api/' + (a.constructor.toString() + 's').toLowerCase() +'/' + encodeURIComponent(id);
+  }
+
+ 
 
   getAllServers(): Observable<Server[]> {
     return this.http.get('/api/servers')

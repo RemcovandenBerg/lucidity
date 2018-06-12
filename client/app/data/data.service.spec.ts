@@ -4,10 +4,11 @@ import {
   HttpClientTestingModule,
   HttpTestingController
 } from '@angular/common/http/testing';
+import { Server } from "../models/Server";
 
 describe("DataService", () => {
   
-  let service: DataService;
+  let service: DataService<Server>;
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],

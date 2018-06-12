@@ -16,7 +16,6 @@ import { ServerDetailsComponent } from "./screens/servers/server-details/server-
 import { DataService } from "./data/data.service";
 import { EditableServerDetailsComponent } from "./screens/servers/editable-server-details/editable-server-details.component";
 import { HttpClientModule } from "@angular/common/http";
-import { LowerCasePipe } from "@angular/common";
 import { DataResolver } from "./data/DataResolver";
 
 @NgModule({
