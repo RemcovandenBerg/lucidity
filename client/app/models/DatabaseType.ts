@@ -1,3 +1,5 @@
 export  enum DatabaseType {
-    MariaDb, SqlServerLinux, Postgres
+    MariaDb = 'Maria DB / MySQL', 
+    SqlServer = 'MS SQL-Server', 
+    Postgresql = 'PostgreSQL'
 }

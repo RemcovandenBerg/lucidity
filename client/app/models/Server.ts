@@ -1,15 +1,22 @@
 import { DatabaseType } from "./DatabaseType";
+import { isNumber } from "util";
 
 export class Server {
+    
     constructor(){
         this.id = 0;
     }
 
-    id: number;
-    get name() {return this.hostname + ' - ' + this.database; }
+    private _type: DatabaseType;
+
+    id: number; 
+    
     hostname: string;
     portnumber: number;
-    type: DatabaseType;
+    get type(): DatabaseType{ return this._type;}
+    set type(value) { this._type = isNumber(value) ? Object.keys(DatabaseType)[value] : this._type = value; }
     database: string;
     rowVersion: any;
+
+    get name() { return this.database + ' @ ' + this.hostname; }
 }

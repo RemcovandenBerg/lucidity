@@ -19,4 +19,7 @@
     "terminal.integrated.env.windows": {
         "ASPNETCORE_ENVIRONMENT": "Development"
     },
+    "terminal.integrated.env.osx": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+    },
 }

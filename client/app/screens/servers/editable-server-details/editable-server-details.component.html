@@ -1,22 +1,21 @@
 <ng-container *ngIf="server">
-<form>
+    <h4>{{server.name}}</h4>
+<form [formGroup]="serverForm">
   <section class="form-block">
     <label>
       <clr-icon shape="storage"></clr-icon> Database</label>
     <div class="form-group">
       <label class="required" for="ff_dbtype">Type</label>
       <div class="select">
-        <select id="ff_dbtype">
-          <option>Sql Server</option>
-          <option>Maria DB</option>
-          <option>PostgreSQL</option>
+        <select id="ff_dbtype" formControlName="type" value="dbtype">
+          <option *ngFor="let dbtype of dbtypeValues" [value]="dbtype">{{dbtype}}</option>
         </select>
       </div>
     </div>
 
     <div class="form-group">
       <label for="ff_database">Name</label>
-      <input type="text" id="ff_database" placeholder="database">
+      <input type="text" id="ff_database" placeholder="database" formControlName="database">
     </div>
   </section>
 
@@ -25,11 +24,11 @@
       <clr-icon shape="connect"></clr-icon> Connectivity</label>
     <div class="form-group">
       <label class="required" for="ff_hostname">Hostname</label>
-      <input type="text" id="ff_hostname" placeholder="example.com">
+      <input type="text" id="ff_hostname" placeholder="example.com" formControlName="hostname">
     </div>
     <div class="form-group">
       <label class="required" for="ff_portnumber">Portnumber</label>
-      <input type="number" id="ff_portnumber">
+      <input type="number" id="ff_portnumber" formControlName="portnumber">
     </div>
   </section>
 </form>
@@ -40,3 +39,9 @@
   </section>
   
 </ng-container>
+<p>{{server | json}}</p>
+
+<p>{{serverErrors | json}}</p>
+
+<p>Form value: {{ serverForm.value | json }}</p>
+<p>Form status: {{ serverForm.status | json }}</p>

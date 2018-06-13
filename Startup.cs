@@ -26,9 +26,9 @@ namespace lucidity
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSwaggerGen(c=> c.SwaggerDoc("v1", new Info { Title = "Lucidity API", Version = "v1"}));
-            services.AddMvc(opt=> opt.Filters.Add<ValidatorActionFilter>() )
-                .AddFluentValidation(fvc => fvc.RegisterValidatorsFromAssemblyContaining<Startup>())
-                .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc(opt=> opt.Filters.Add<ValidatorActionFilter>() ).SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
+                .AddFluentValidation(fvc => fvc.RegisterValidatorsFromAssemblyContaining<Startup>());
+                
             services.AddDbContext<DataContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             // In production, the Angular files will be served from this directory
