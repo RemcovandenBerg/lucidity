@@ -4,39 +4,85 @@ import {
   HttpClientTestingModule,
   HttpTestingController
 } from '@angular/common/http/testing';
-import { Server } from "../models/Server";
+import { Server } from "client/app/models/Server";
+import { Query } from "client/app/models/Query";
+import { Sync } from "client/app/models/Sync";
 
 describe("DataService", () => {
   
-  let service: DataService<Server>;
-  beforeEach(() => {
+  let service: DataService;
+  let httpMock: HttpTestingController
+
+  beforeEach( () => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      providers: [DataService]
+      providers: [DataService],
     });
+
     service = TestBed.get(DataService);
+    httpMock = TestBed.get(HttpTestingController);
+  });
+  
+  it("should be able to create service instance", () => {
+    expect(service).toBeDefined();
+    expect(httpMock).toBeDefined();
   });
 
-  it("should be able to create service instance",  inject(
-    [HttpTestingController],  
-     (httpMock: HttpTestingController) => {
-      expect(service).toBeDefined();
-  }));
+  describe('"Server" calls exists of', () => {
+    let baseUri = '/api/servers/';
 
-  it('should call server api', inject(
-    [HttpTestingController, DataService],  
-     (httpMock: HttpTestingController) => {
-      
+    it('all', () => {
       service.getAllServers().subscribe();
-      httpMock.expectOne('/api/servers');
-  }));
+      httpMock.expectOne(baseUri);
+    });
 
-  it('should call server api', inject(
-    [HttpTestingController, DataService],  
-     (httpMock: HttpTestingController) => {
-     service.getServer('hello').subscribe();
+    it('single', () => {
+        service.getServer('12').subscribe();
+        httpMock.expectOne(baseUri + '12');
+    });
 
-     httpMock.expectOne('/api/servers/hello');
-  }));
-
+    it('save', () => {
+      service.saveServer(new Server()).subscribe();
+      httpMock.expectOne(baseUri);
+    });
   });
+
+  describe('"Query" calls exists of', () => {
+    let baseUri = '/api/queries/';
+
+    it('all', () => {
+      service.getAllQueries().subscribe();
+      httpMock.expectOne(baseUri);
+    });
+
+    it('single', () => {
+        service.getQuery('12').subscribe();
+        httpMock.expectOne(baseUri + '12');
+    });
+
+    it('save', () => {
+      service.saveQuery(new Query()).subscribe();
+      httpMock.expectOne(baseUri);
+    });
+  });
+
+  describe('"Syncs" calls exists of', () => {
+    let baseUri = '/api/syncs/';
+
+    it('all', () => {
+      service.getAllSyncs().subscribe();
+      httpMock.expectOne(baseUri);
+    });
+
+    it('single', () => {
+        service.getSync('12').subscribe();
+        httpMock.expectOne(baseUri + '12');
+    });
+
+    it('save', () => {
+      service.saveSync(new Sync()).subscribe();
+      httpMock.expectOne(baseUri);
+    });
+  });
+
+});

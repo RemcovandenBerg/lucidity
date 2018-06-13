@@ -16,7 +16,7 @@ export class EditableServerDetailsComponent implements OnInit {
   @Input()
   server: Server;
 
-  constructor(private activatedRoute: ActivatedRoute, service: DataService<Server>) {
+  constructor(private activatedRoute: ActivatedRoute, service: DataService) {
     activatedRoute.paramMap.subscribe(a => {
       let id = a.get('id');
       if (id === "0")

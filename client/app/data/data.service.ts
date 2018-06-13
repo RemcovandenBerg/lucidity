@@ -1,72 +1,57 @@
-import { Input, Injectable } from "@angular/core";
-import { of } from "rxjs/observable/of";
+import { Injectable } from "@angular/core";
 import { Observable } from "rxjs/Observable";
-import { DatabaseType } from "../models/DatabaseType";
 import { HttpClient } from '@angular/common/http';
 import { map } from "rxjs/operators";
 import { Server } from "../models/Server";
 import { Query } from "../models/Query";
 import { Sync } from "../models/Sync";
 
-/**
- * @description
- * @class
- */
-
 @Injectable()
-export class DataService<T> {
+export class DataService {
   
-  private myApi: string;
-
   constructor(private http: HttpClient) {
-
-    this.myApi = this.buildMyApi<T>();
   }
 
-  get<T>(id: any): Observable<T> {
-    return this.http.get(this.buildGetSingle<T>(id)) as Observable<T>;
-  }
+  private readonly serversApi = '/api/servers/';
+  private readonly queriesApi = '/api/queries/'
+  private readonly syncsApi = '/api/syncs/';
 
-  private buildMyApi<T>(): string {
-    let a: T;
-    return (a.constructor.toString() + 's').toLowerCase();
-  }
-
-  private buildGetSingle<T>(id: any): string {
-    let a:T;
-    return '/api/' + (a.constructor.toString() + 's').toLowerCase() +'/' + encodeURIComponent(id);
-  }
-
- 
-
-  getAllServers(): Observable<Server[]> {
-    return this.http.get('/api/servers')
-      .pipe( map( (obj: any[]) => obj.map( (s) => {
-        let sr = new Server();
-        Object.assign(sr, s);
-        return sr;
-      })));
+   getAllServers(): Observable<Server[]> {
+    return this.http.get(this.serversApi).pipe( map( (obj: Server[]) => obj.map( (s) => Object.assign(new Server(), s)) ));
   }
 
   getServer(id: string): Observable<Server> {
-    return this.http.get('/api/servers/'+ encodeURIComponent(id))
+    return this.http.get(this.serversApi+ encodeURIComponent(id))
       .pipe(map( obj=> Object.assign(new Server(), obj) )) as Observable<Server>;
   }
 
+  saveServer(server: Server): Observable<any>{
+    return this.http.post(this.serversApi, server);
+  }
+ 
+
   getAllQueries(): Observable<Query[]> {
-    return this.http.get('/api/queries') as Observable<Query[]>;
+    return this.http.get(this.queriesApi) as Observable<Query[]>;
+  }
+  
+  getQuery(id: string) {
+    return this.http.get(this.queriesApi + encodeURIComponent(id)) as Observable<Query>;
   }
 
-  getQuery(id: string) {
-      return this.http.get('/api/queries/' + encodeURIComponent(id)) as Observable<Query>;
+  saveQuery(query: Query): Observable<any>{
+    return this.http.post(this.queriesApi, query);
   }
 
   getAllSyncs(): Observable<Sync[]> {
-    return this.http.get('/api/syncs') as Observable<Sync[]>;
+    return this.http.get(this.syncsApi) as Observable<Sync[]>;
   }
 
   getSync(id: string) {
-      return this.http.get('/api/syncs/' + encodeURIComponent(id)) as Observable<Sync>;
+    return this.http.get(this.syncsApi + encodeURIComponent(id)) as Observable<Sync>;
+  }
+
+  saveSync(sync: Sync) {
+    return this.http.post(this.syncsApi, sync);
   }
 
 }
