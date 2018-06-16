@@ -10,13 +10,14 @@ export class Server {
     private _type: DatabaseType;
 
     id: number; 
-    
     hostname: string;
     portnumber: number;
+    database: string;
     get type(): DatabaseType{ return this._type;}
     set type(value) { this._type = isNumber(value) ? Object.keys(DatabaseType)[value] : this._type = value; }
-    database: string;
     rowVersion: any;
 
-    get name() { return this.database + ' @ ' + this.hostname; }
+    get name(): string {
+        return (this.database) ? this.database + ' @ ' + this.hostname : '';
+    }
 }

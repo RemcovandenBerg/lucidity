@@ -23,11 +23,16 @@ namespace lucidity
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
+
+        // FluentValidation docs: https://github.com/JeremySkinner/FluentValidation/wiki/i.-ASP.NET-Core-integration
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSwaggerGen(c=> c.SwaggerDoc("v1", new Info { Title = "Lucidity API", Version = "v1"}));
             services.AddMvc(opt=> opt.Filters.Add<ValidatorActionFilter>() ).SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
-                .AddFluentValidation(fvc => fvc.RegisterValidatorsFromAssemblyContaining<Startup>());
+                .AddFluentValidation(fvc => {
+                    fvc.RegisterValidatorsFromAssemblyContaining<Startup>();
+                    fvc.RunDefaultMvcValidationAfterFluentValidationExecutes = false;
+                });
                 
             services.AddDbContext<DataContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 

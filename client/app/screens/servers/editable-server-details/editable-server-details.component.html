@@ -2,6 +2,8 @@
     <h4>{{server.name}}</h4>
 <form [formGroup]="serverForm">
   <section class="form-block">
+      <input type="hidden" id="ff_id"  formControlName="id">
+      <input type="hidden" id="ff_rowversion" formControlName="rowVersion">
     <label>
       <clr-icon shape="storage"></clr-icon> Database</label>
     <div class="form-group">

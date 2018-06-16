@@ -31,7 +31,7 @@ namespace lucidity.Controllers
         }
 
         [HttpPost]
-        public ActionResult<Server> Post(Server server)
+        public ActionResult<Server> Post([FromBody] Server server)
         {
             if (server.Id == 0)
                 _dataContext.Servers.Add(server);

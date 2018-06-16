@@ -8,7 +8,8 @@
         [iconShape]="'rack-server'">
     </hb-crudlist>
     <div class="content-area">
-        
+            <!-- *ngIf="loading" -->
+        <span class="spinner spinner-inline"></span>
         <router-outlet></router-outlet>
     </div>
 </div>

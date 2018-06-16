@@ -41,20 +41,24 @@ export class EditableServerDetailsComponent {
 
   private initForm(fb: FormBuilder): any {
     return fb.group({ 
+      id: 0,
       hostname: ['', Validators.required],
       portnumber: [1433, Validators.required],
       database: ['', Validators.required],
-      type: [DatabaseType.SqlServer, Validators.required]
+      type: [DatabaseType.SqlServer, Validators.required],
+      rowVersion: '',
     });
   }
 
   private writeServerAndSetForm(server: Server):void {
     this.server = server;
     this.serverForm.setValue({
+      id: this.server.id,
       hostname: this.server.hostname,
       database: this.server.database,
       type: (this.server.type) ? DatabaseType[this.server.type] : null,
-      portnumber: this.server.portnumber
+      portnumber: this.server.portnumber,
+      rowVersion: this.server.rowVersion,
    });
   }
 
