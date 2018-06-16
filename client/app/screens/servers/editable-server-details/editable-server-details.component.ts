@@ -14,28 +14,23 @@ import { DataService } from "../../../data/data.service";
 
 export class EditableServerDetailsComponent {
  
-  private fb: FormBuilder;
- 
-  @Input() //?
-  server: Server;
+  public server: Server;
 
   public serverForm: FormGroup;
+  
+  //options list
   public dbtypeValues = Object.keys(DatabaseType).map(v => DatabaseType[v]);
+  
   public serverErrors: any;
 
-  constructor(private service: DataService, private router: Router, activatedRoute: ActivatedRoute,  fb: FormBuilder) {
-
+  constructor(private service: DataService, private router: Router, activatedRoute: ActivatedRoute, fb: FormBuilder) {
     this.serverForm = this.initForm(fb);
-
     activatedRoute.paramMap.subscribe(a => {
       let id = a.get('id');
-      if (id === "0") {
-        this.server = new Server();
-        this.serverForm.reset();
-      }
-        //this.writeServerAndSetForm( new Server() ) //new create
+      if (id === "0") 
+        this.writeServerAndSetForm( new Server());     
       else 
-        service.getServer(a.get('id')).subscribe( s => this.writeServerAndSetForm(s) );
+        service.getServer(a.get('id')).subscribe(s => this.writeServerAndSetForm(s));
     });
   }
 
@@ -56,7 +51,7 @@ export class EditableServerDetailsComponent {
       id: this.server.id,
       hostname: this.server.hostname,
       database: this.server.database,
-      type: (this.server.type) ? DatabaseType[this.server.type] : null,
+      type: this.server.type,
       portnumber: this.server.portnumber,
       rowVersion: this.server.rowVersion,
    });
@@ -71,12 +66,13 @@ export class EditableServerDetailsComponent {
   public onSave(){
     this.server = this.readForm();
     this.service.saveServer(this.server).subscribe(
-      ()=>{
-        this.router.navigate(['../../../../']);
+      (data) => {
+        if (this.server.id == 0)
+          this.server.id = data.id; //Dit kan netter en robuuster. (refreshlist?)
+        this.router.navigate(['servers', 'details', this.server.id]);
       }, (err) => {
         this.serverErrors = err;
       });
-    //iets emitten en opslaan etc/
   }
   
   public onCancel(){

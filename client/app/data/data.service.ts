@@ -29,6 +29,9 @@ export class DataService {
     return this.http.post(this.serversApi, server);
   }
  
+  deleteServer(server: Server): Observable<any>{
+    return this.http.post(this.serversApi + encodeURIComponent(''+server.id) + '/delete/', server);
+  }
 
   getAllQueries(): Observable<Query[]> {
     return this.http.get(this.queriesApi) as Observable<Query[]>;

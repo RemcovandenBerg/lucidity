@@ -17,11 +17,13 @@ import { DataService } from "./data/data.service";
 import { EditableServerDetailsComponent } from "./screens/servers/editable-server-details/editable-server-details.component";
 import { HttpClientModule } from "@angular/common/http";
 import { DataResolver } from "./data/DataResolver";
+import { ConfirmationModalComponent } from "./components/confirmation-modal/confirmation-modal.component";
 
 @NgModule({
     declarations: [
         AppComponent,
         CrudlistComponent,
+        ConfirmationModalComponent,
         LoginComponent,
         ServersComponent,
         ServerDetailsComponent,
