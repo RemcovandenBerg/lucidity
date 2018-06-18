@@ -6,11 +6,7 @@
   "scripts": {
     "ng": "ng",
     "start": "cd client && ng serve",
-<<<<<<< Updated upstream
-    "build": "cd client && ng build --aot --extract-css",
-=======
     "build": "cd client && ng build --aot  --extract-css",
->>>>>>> Stashed changes
     "build:ssr": "npm run build -- --app=ssr --output-hashing=media",
     "test": "cd client && ng test",
     "lint": "cd client && ng lint",
