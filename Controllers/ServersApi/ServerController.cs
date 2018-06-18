@@ -42,9 +42,26 @@ namespace lucidity.Controllers
                 _dataContext.SaveChanges();
                 return Ok();
             }
+            catch (DbUpdateConcurrencyException)    
+            {
+                return Conflict(UserMessages.Conflict(nameof(server)));
+            }
+        }
+        // As POST, cause HTTP delete should not accept a body ( and we need the rowversion)
+        [HttpPost("{id:int}/delete")] 
+        public ActionResult Delete([FromBody] Server server)
+        {
+            if (server.Id == 0) return NotFound();
+            try {
+                //Op deze manier wordt ook de rowversion meegecheck
+                _dataContext.Servers.Attach(server);
+                _dataContext.Servers.Remove(server);
+                _dataContext.SaveChanges(); 
+                return Ok();
+            }
             catch (DbUpdateConcurrencyException)
             {
-                return Conflict("Server has already been changed, reload and try again.");
+                 return Conflict(UserMessages.Conflict(nameof(server)));
             }
         }
     }

@@ -4,12 +4,12 @@ import { isNumber } from "util";
 export class Server {
 
     constructor() {
-      this.id = 0;
-      this.hostname = '';
-      this.database = '';
-      this.type = DatabaseType.MariaDb;
-      this.portnumber = 0;
-      this.rowVersion = null;
+        this.id = 0;
+        this.hostname = '';
+        this.database = '';
+        this.portnumber = 0;
+        this.type = DatabaseType.MariaDb;
+        this.rowVersion = null;
     }
 
     private _type: DatabaseType;

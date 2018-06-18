@@ -14,26 +14,27 @@ import { DataService } from "../../../data/data.service";
 
 export class EditableServerDetailsComponent {
 
-    private fb: FormBuilder;
+  public server: Server;
+  public serverForm: FormGroup;
 
-    public server: Server = null;
+  // options list
+  public dbtypeValues = Object.keys(DatabaseType).map(v => DatabaseType[v]);
 
-    public serverForm: FormGroup;
-    public dbtypeValues = Object.keys(DatabaseType).map(v => DatabaseType[v]);
-    public serverErrors: any;
+  public serverErrors: any;
 
-    constructor(private service: DataService, private router: Router, activatedRoute: ActivatedRoute, fb: FormBuilder) {
-
+  constructor(private service: DataService, private router: Router, activatedRoute: ActivatedRoute, fb: FormBuilder) {
         this.serverForm = this.initForm(fb);
 
         activatedRoute.paramMap.subscribe(a => {
-            let id = a.get('id');
-            if (id === "0")
-                this.writeServerAndSetForm(new Server());
-            else
-                service.getServer(a.get('id')).subscribe(s => this.writeServerAndSetForm(s));
-        });
-    }
+        let id = a.get('id');
+        if (id === "0")
+            this.writeServerAndSetForm( new Server());
+        else
+            service.getServer(a.get('id')).subscribe(s => this.writeServerAndSetForm(s));
+
+    });
+  }
+
 
     private initForm(fb: FormBuilder): any {
         return fb.group({
@@ -52,7 +53,7 @@ export class EditableServerDetailsComponent {
             id: server.id,
             hostname: server.hostname,
             database: server.database,
-            type: server.type,
+            type: DatabaseType[server.type],
             portnumber: server.portnumber,
             rowVersion: server.rowVersion,
         });
@@ -60,7 +61,7 @@ export class EditableServerDetailsComponent {
 
     private readForm(): Server {
         let s: Server = this.serverForm.value;
-        s.type = DatabaseType[s.type];
+        s.type = s.type;
         return Object.assign(new Server(), s);
     }
 
@@ -68,7 +69,7 @@ export class EditableServerDetailsComponent {
         this.server = this.readForm();
         this.service.saveServer(this.server).subscribe(
             () => {
-                this.router.navigate(['../../../../']);
+                this.router.navigate(['servers']);
             }, (err) => {
                 this.serverErrors = err;
             });

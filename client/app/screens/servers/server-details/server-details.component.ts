@@ -1,7 +1,8 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { Server } from "client/app/models/Server";
-import { ActivatedRoute } from "@angular/router";
-//import { DataService } from "../../../data/data.service";
+import { ActivatedRoute, Router } from "@angular/router";
+import { DataService } from "client/app/data/data.service";
+import { DatabaseType } from "client/app/models/DatabaseType";
 
 @Component({
   selector: "app-server-details",
@@ -12,11 +13,23 @@ import { ActivatedRoute } from "@angular/router";
 
 export class ServerDetailsComponent implements OnInit {
 
-  @Input()
   server: Server;
+  errors: any;
 
-  constructor(private activatedRoute: ActivatedRoute) {
-      activatedRoute.data.subscribe( data => this.server = data.server );
+  serverTypeDescription: string;
+
+  constructor(activatedRoute: ActivatedRoute, private dataService: DataService, private router: Router) {
+    
+      activatedRoute.data.subscribe( data => {this.server = data.server; 
+        this.serverTypeDescription = DatabaseType[''+this.server.type];
+      } );
+  }
+
+  delete(server: Server): void {
+    this.dataService.deleteServer(server).subscribe(
+      () => this.router.navigate(['servers']),
+      (err) => this.errors = err
+    )
   }
 
   ngOnInit() {
