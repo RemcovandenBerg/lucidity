@@ -13,8 +13,6 @@ export class DataResolver implements Resolve<any> {
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> {
     let id = route.paramMap.get('id');
-    if (id == '0')
-      return of({});
     if (state.url.indexOf('servers/details/') > -1) 
       return this.dataService.getServer(id)
     if (state.url.indexOf('queries/details/') > -1) 

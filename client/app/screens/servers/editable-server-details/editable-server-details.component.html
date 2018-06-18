@@ -1,51 +1,52 @@
-<h4 *ngIf="!server.name" class="edit-title">New database-server</h4>
-<h4 *ngIf="server.name" class="edit-title">{{server.name}}</h4>
-
+<span *ngIf="!server" class="spinner spinner-inline fade in"></span>
 <ng-container *ngIf="server">
-    <form [formGroup]="serverForm">
-        <section class="form-block">
-            <input type="hidden" id="ff_id" formControlName="id">
-            <input type="hidden" id="ff_rowversion" formControlName="rowVersion">
-            <label>
-                <clr-icon shape="storage"></clr-icon> Database</label>
-            <div class="form-group">
-                <label class="required" for="ff_dbtype">Type</label>
-                <div class="select">
-                    <select id="ff_dbtype" formControlName="type" value="dbtype">
-                        <option *ngFor="let dbtype of dbtypeValues" [value]="dbtype">{{dbtype}}</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="ff_database">DB-name</label>
-                <input type="text" id="ff_database" placeholder="database" formControlName="database">
-            </div>
-        </section>
-
-        <section class="form-block">
-            <label>
-                <clr-icon shape="connect"></clr-icon> Connectivity</label>
-            <div class="form-group">
-                <label class="required" for="ff_hostname">Hostname</label>
-                <input type="text" id="ff_hostname" placeholder="example.com" formControlName="hostname">
-            </div>
-            <div class="form-group">
-                <label class="required" for="ff_portnumber">Portnumber</label>
-                <input type="number" id="ff_portnumber" formControlName="portnumber">
-            </div>
-        </section>
-
-        <section class="form-block">
-            <p class="server-errors fade in" *ngIf="serverErrors">{{serverErrors | json}}</p>
-        </section>
-    </form>
-
+  <h4 *ngIf="!server.name" class="edit-title">New database-server</h4>
+  <h4 *ngIf="server.name" class="edit-title">{{server.name}}</h4>
+  <form [formGroup]="serverForm">
     <section class="form-block">
-        <button type="button" class="btn btn-primary" (click)="onSave()">Save</button>
-        <button type="button" class="btn btn-secondary" (click)="onCancel()">Cancel</button>
+      <input type="hidden" id="ff_id" formControlName="id">
+      <input type="hidden" id="ff_rowversion" formControlName="rowVersion">
+      <label>
+        <clr-icon shape="storage"></clr-icon> Database</label>
+      <div class="form-group">
+        <label class="required" for="ff_dbtype">Type</label>
+        <div class="select">
+          <select id="ff_dbtype" formControlName="type">
+            <option *ngFor="let dbtype of databaseTypeDescriptions; index as i" [value]="i">{{dbtype}}</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="ff_database">DB-name</label>
+        <input type="text" id="ff_database" placeholder="database" formControlName="database">
+      </div>
     </section>
 
+    <section class="form-block">
+      <label>
+        <clr-icon shape="connect"></clr-icon> Connectivity</label>
+      <div class="form-group">
+        <label class="required" for="ff_hostname">Hostname</label>
+        <input type="text" id="ff_hostname" placeholder="example.com" formControlName="hostname">
+      </div>
+      <div class="form-group">
+        <label class="required" for="ff_portnumber">Portnumber</label>
+        <input type="number" id="ff_portnumber" formControlName="portnumber">
+      </div>
+    </section>
+
+    <section class="form-block">
+      <p class="server-errors fade in" *ngIf="serverErrors">{{serverErrors | json}}</p>
+    </section>
+  </form>
+
+  <section class="form-block">
+    <button type="button" class="btn btn-primary" (click)="onSave()">Save</button>
+    <button type="button" class="btn btn-secondary" (click)="onCancel()">Cancel</button>
+  </section>
+
+  <p>Form value: {{ serverForm.value | json }}</p>
+  <p>Form status: {{ serverForm.status | json }}</p>
+
 </ng-container>
-<p>Form value: {{ serverForm.value | json }}</p>
-<p>Form status: {{ serverForm.status | json }}</p>

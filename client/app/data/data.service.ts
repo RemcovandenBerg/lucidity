@@ -5,6 +5,7 @@ import { map } from "rxjs/operators";
 import { Server } from "../models/Server";
 import { Query } from "../models/Query";
 import { Sync } from "../models/Sync";
+import { of } from "rxjs/observable/of";
 
 @Injectable()
 export class DataService {
@@ -21,6 +22,7 @@ export class DataService {
   }
 
   getServer(id: string): Observable<Server> {
+    if (id=='0') return of(new Server());
     return this.http.get(this.serversApi+ encodeURIComponent(id))
       .pipe(map( obj=> Object.assign(new Server(), obj) )) as Observable<Server>;
   }

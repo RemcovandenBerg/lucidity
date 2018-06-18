@@ -8,7 +8,7 @@ export class Server {
         this.hostname = '';
         this.database = '';
         this.portnumber = 0;
-        this.type = DatabaseType.MariaDb;
+        this.type = DatabaseType.SqlServer;
         this.rowVersion = null;
     }
 
@@ -18,8 +18,7 @@ export class Server {
     hostname: string;
     portnumber: number;
     database: string;
-    get type(): DatabaseType { return this._type; }
-    set type(value) { this._type = isNumber(value) ? Object.keys(DatabaseType)[value] : this._type = value; }
+    type: DatabaseType;
     rowVersion: any;
 
     get name(): string {

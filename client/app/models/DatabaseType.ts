@@ -1,5 +1,11 @@
 export  enum DatabaseType {
-    MariaDb = 'Maria DB / MySQL', 
-    SqlServer = 'MS SQL-Server', 
-    Postgresql = 'PostgreSQL'
+    MariaDb = 0,
+    SqlServer = 1,
+    Postgresql = 2,
 }
+
+export const DatabaseTypeDescriptions:  string[] = [
+  'Maria DB / MySQL',
+  'MS SQL-Server',
+  'PostgreSQL'  
+];
