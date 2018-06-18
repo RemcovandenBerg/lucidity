@@ -18,11 +18,17 @@ export class ServersComponent implements OnInit {
 
     public editableServer: Server;
 
-    constructor(private srv: DataService) {
-        this.serverlist = this.srv.getAllServers();
+    constructor(private srv: DataService, ActivatedRoute) {
+
+        //this.serverlist = this.srv.getAllServers();
     }
 
     ngOnInit() {
+      this.refreshList();
+    }
+
+    public refreshList(){
+      this.serverlist = this.srv.getAllServers();
     }
 
     public newServer(): void {

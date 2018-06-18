@@ -21,6 +21,7 @@ export const ROUTES: Routes = [
     { path: 'dashboard', component: DashboardComponent },
     {
         path: 'servers', component: ServersComponent,
+        
         children: [
             { path: 'details/:id', component: ServerDetailsComponent, resolve: {server: DataResolver} },
             { path: 'details/:id/edit', component: EditableServerDetailsComponent, resolve: {server: DataResolver} }
@@ -30,6 +31,8 @@ export const ROUTES: Routes = [
     { path: 'queries', component: QueriesComponent },
     { path: 'syncs', component: SyncsComponent },
     { path: 'settings', component: LoginComponent }
+    
+    
 ]; // straks apart
 
-export const ROUTING: ModuleWithProviders = RouterModule.forRoot(ROUTES);
+export const ROUTING: ModuleWithProviders = RouterModule.forRoot(ROUTES); //, { onSameUrlNavigation: "reload" }
