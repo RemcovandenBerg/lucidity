@@ -1,15 +1,13 @@
 <div class="content-container">
-    <hb-crudlist (onNewItem)="newServer()" 
+    <hb-crudlist (onNewItem)="newServer()"
         [entityName]="'Database'"
         [linkDescriptionPathProp]="'name'"
-        [navItems]="serverlist" 
+        [navItems]="serverlist"
         [linkBasePath]="'details'"
-        [linkIdPathProp]="'id'" 
+        [linkIdPathProp]="'id'"
         [iconShape]="'rack-server'">
     </hb-crudlist>
     <div class="content-area">
-            <!-- *ngIf="loading" -->
-        <span class="spinner spinner-inline"></span>
-        <router-outlet></router-outlet>
+       <router-outlet></router-outlet>
     </div>
 </div>

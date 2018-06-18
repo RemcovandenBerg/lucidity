@@ -7,79 +7,74 @@ import { DataService } from "../../../data/data.service";
 
 
 @Component({
-  selector: "app-editable-server-details",
-  templateUrl: "./editable-server-details.component.html",
-  styleUrls: ["./editable-server-details.component.scss"]
+    selector: "app-editable-server-details",
+    templateUrl: "./editable-server-details.component.html",
+    styleUrls: ["./editable-server-details.component.scss"]
 })
 
 export class EditableServerDetailsComponent {
- 
-  private fb: FormBuilder;
- 
-  @Input() //?
-  server: Server;
 
-  public serverForm: FormGroup;
-  public dbtypeValues = Object.keys(DatabaseType).map(v => DatabaseType[v]);
-  public serverErrors: any;
+    private fb: FormBuilder;
 
-  constructor(private service: DataService, private router: Router, activatedRoute: ActivatedRoute,  fb: FormBuilder) {
+    public server: Server = null;
 
-    this.serverForm = this.initForm(fb);
+    public serverForm: FormGroup;
+    public dbtypeValues = Object.keys(DatabaseType).map(v => DatabaseType[v]);
+    public serverErrors: any;
 
-    activatedRoute.paramMap.subscribe(a => {
-      let id = a.get('id');
-      if (id === "0") {
-        this.server = new Server();
-        this.serverForm.reset();
-      }
-        //this.writeServerAndSetForm( new Server() ) //new create
-      else 
-        service.getServer(a.get('id')).subscribe( s => this.writeServerAndSetForm(s) );
-    });
-  }
+    constructor(private service: DataService, private router: Router, activatedRoute: ActivatedRoute, fb: FormBuilder) {
 
-  private initForm(fb: FormBuilder): any {
-    return fb.group({ 
-      id: 0,
-      hostname: ['', Validators.required],
-      portnumber: [1433, Validators.required],
-      database: ['', Validators.required],
-      type: [DatabaseType.SqlServer, Validators.required],
-      rowVersion: '',
-    });
-  }
+        this.serverForm = this.initForm(fb);
 
-  private writeServerAndSetForm(server: Server):void {
-    this.server = server;
-    this.serverForm.setValue({
-      id: this.server.id,
-      hostname: this.server.hostname,
-      database: this.server.database,
-      type: (this.server.type) ? DatabaseType[this.server.type] : null,
-      portnumber: this.server.portnumber,
-      rowVersion: this.server.rowVersion,
-   });
-  }
+        activatedRoute.paramMap.subscribe(a => {
+            let id = a.get('id');
+            if (id === "0")
+                this.writeServerAndSetForm(new Server());
+            else
+                service.getServer(a.get('id')).subscribe(s => this.writeServerAndSetForm(s));
+        });
+    }
 
-  private readForm(): Server  {
-    let s: Server = this.serverForm.value;
-    s.type = DatabaseType[s.type];
-    return Object.assign(new Server(), s);
-  }
+    private initForm(fb: FormBuilder): any {
+        return fb.group({
+            id: 0,
+            hostname: ['', Validators.required],
+            portnumber: [1433, Validators.required],
+            database: ['', Validators.required],
+            type: [DatabaseType.SqlServer, Validators.required],
+            rowVersion: '',
+        });
+    }
 
-  public onSave(){
-    this.server = this.readForm();
-    this.service.saveServer(this.server).subscribe(
-      ()=>{
-        this.router.navigate(['../../../../']);
-      }, (err) => {
-        this.serverErrors = err;
-      });
-    //iets emitten en opslaan etc/
-  }
-  
-  public onCancel(){
-    window.history.back();
-  }
+    private writeServerAndSetForm(server: Server): void {
+        this.server = server;
+        this.serverForm.setValue({
+            id: server.id,
+            hostname: server.hostname,
+            database: server.database,
+            type: server.type,
+            portnumber: server.portnumber,
+            rowVersion: server.rowVersion,
+        });
+    }
+
+    private readForm(): Server {
+        let s: Server = this.serverForm.value;
+        s.type = DatabaseType[s.type];
+        return Object.assign(new Server(), s);
+    }
+
+    public onSave() {
+        this.server = this.readForm();
+        this.service.saveServer(this.server).subscribe(
+            () => {
+                this.router.navigate(['../../../../']);
+            }, (err) => {
+                this.serverErrors = err;
+            });
+    }
+
+    public onCancel() {
+        window.history.back();
+    }
 }

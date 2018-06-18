@@ -5,8 +5,8 @@
   "angular-cli": {},
   "scripts": {
     "ng": "ng",
-    "start": "cd client && ng serve --aot",
-    "build": "cd client && ng build  --extract-css",
+    "start": "cd client && ng serve",
+    "build": "cd client && ng build --aot --extract-css",
     "build:ssr": "npm run build -- --app=ssr --output-hashing=media",
     "test": "cd client && ng test",
     "lint": "cd client && ng lint",
