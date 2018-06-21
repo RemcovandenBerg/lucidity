@@ -18,6 +18,7 @@ import { EditableServerDetailsComponent } from "./screens/servers/editable-serve
 import { HttpClientModule } from "@angular/common/http";
 import { DataResolver } from "./data/DataResolver";
 import { ConfirmationModalComponent } from "./components/confirmation-modal/confirmation-modal.component";
+import { ServersResolver } from "./data/ServersResolver";
 
 @NgModule({
     declarations: [
@@ -43,7 +44,7 @@ import { ConfirmationModalComponent } from "./components/confirmation-modal/conf
         ROUTING
         
     ],
-    providers: [DataService, DataResolver],
+    providers: [DataService, DataResolver, ServersResolver],
     bootstrap: [AppComponent]
 })
 export class AppModule {

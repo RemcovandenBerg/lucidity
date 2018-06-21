@@ -14,25 +14,28 @@ import { SyncsComponent } from './screens/syncs/syncs.component';
 import { ServerDetailsComponent } from './screens/servers/server-details/server-details.component';
 import { EditableServerDetailsComponent } from './screens/servers/editable-server-details/editable-server-details.component';
 import { DataResolver } from './data/DataResolver';
+import { ServersResolver } from './data/ServersResolver';
 
 
 export const ROUTES: Routes = [
-    { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-    { path: 'dashboard', component: DashboardComponent },
-    {
-        path: 'servers', component: ServersComponent,
-        
-        children: [
-            { path: 'details/:id', component: ServerDetailsComponent, resolve: {server: DataResolver} },
-            { path: 'details/:id/edit', component: EditableServerDetailsComponent, resolve: {server: DataResolver} }
-        ]
-    },
+  { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+  { path: 'dashboard', component: DashboardComponent },
+  {
+    path: 'servers', component: ServersComponent,
+    resolve: { servers: ServersResolver },
+    runGuardsAndResolvers: "always",
+    children: [
+      { path: 'details/:id', component: ServerDetailsComponent, resolve: { server: DataResolver } },
+      { path: 'details/:id/edit', component: EditableServerDetailsComponent, resolve: { server: DataResolver } }
+    ]
+  },
 
-    { path: 'queries', component: QueriesComponent },
-    { path: 'syncs', component: SyncsComponent },
-    { path: 'settings', component: LoginComponent }
-    
-    
+  { path: 'queries', component: QueriesComponent },
+  { path: 'syncs', component: SyncsComponent },
+  { path: 'settings', component: LoginComponent }
+
+
 ]; // straks apart
 
-export const ROUTING: ModuleWithProviders = RouterModule.forRoot(ROUTES); //, { onSameUrlNavigation: "reload" }
+//export const ROUTING: ModuleWithProviders = RouterModule.forRoot(ROUTES, { onSameUrlNavigation: "reload" });
+export const ROUTING: ModuleWithProviders = RouterModule.forRoot(ROUTES);
