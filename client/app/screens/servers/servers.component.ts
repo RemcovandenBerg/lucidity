@@ -15,14 +15,8 @@ export class ServersComponent {
 
     public serverlist: Observable<Server[]>;
 
-    public editableServer: Server;
-
     constructor(activatedRoute: ActivatedRoute) {
        activatedRoute.data.subscribe( data => this.serverlist = of(data.servers) );
-    }
-
-    public newServer(): void {
-        this.editableServer = new Server();
     }
 
 }

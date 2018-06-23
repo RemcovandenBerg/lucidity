@@ -1,0 +1,28 @@
+<span *ngIf="!query" class="spinner spinner-inline fade in"></span>
+<ng-container *ngIf="query">
+  <h4 class="edit-title">{{query.name}}</h4>
+  <form>
+    <section class="form-block">
+      <label>
+        <clr-icon shape="code"></clr-icon> Query</label>
+      <div class="form-group">
+          <label>Name</label>
+          <input type="text" size="35" readonly [attr.value]="query.name">
+      </div>
+
+      <div class="form-group">
+          <label>Text</label>
+          <input type="text" size="35" readonly [attr.value]="query.text">
+      </div>
+    </section>
+
+<section class="form-block">
+  <button type="button" class="btn btn-secondary" [routerLink]="['edit']">Edit</button>
+  <button type="button" class="btn btn-secondary" (click)="confirm = true">Delete</button>
+</section>
+
+<hb-confirmation-modal [open]="confirm" (onCancel)="confirm=false" (onConfirm)="delete(); confirm = false;"></hb-confirmation-modal>
+<p>{{errors | json}}</p>
+
+</form>
+</ng-container>

@@ -8,35 +8,40 @@ using Microsoft.EntityFrameworkCore;
 
 namespace lucidity.Controllers
 {
+
+    //TODO Refactor to generic CrudController..<T>
+
     [Route("api/[controller]")]
-    public class ServersController : Controller
+    public class QueriesController : Controller
     {
         private readonly DataContext dataContext;
 
-        public ServersController(DataContext dataContext)
+
+        public QueriesController(DataContext dtc)
         {
-            this.dataContext = dataContext;
+            dataContext = dtc;
         }
 
+
         [HttpGet]
-        public IEnumerable<Server> Get()
+        public IEnumerable<Query> Get()
         {
-            return dataContext.Servers.ToList();
+            return dataContext.Queries.ToList();
         }
 
         [HttpGet("{id:int}")]
-        public Server Get(int id)
+        public Query Get(int id)
         {
-            return dataContext.Servers.Find(id);
+            return dataContext.Queries.Find(id);
         }
 
         [HttpPost]
-        public ActionResult<Server> Post([FromBody] Server server)
+        public ActionResult<Query> Post([FromBody] Query query)
         {
-            if (server.Id == 0)
-                dataContext.Servers.Add(server);
+            if (query.Id == 0)
+                dataContext.Queries.Add(query);
             else
-                dataContext.Servers.Update(server);
+                dataContext.Queries.Update(query);
             try
             {
                 dataContext.SaveChanges();
@@ -44,25 +49,28 @@ namespace lucidity.Controllers
             }
             catch (DbUpdateConcurrencyException)    
             {
-                return Conflict(UserMessages.Conflict(nameof(server)));
+                return Conflict(UserMessages.Conflict(nameof(query)));
             }
         }
         // As POST, cause HTTP delete should not accept a body ( and we need the rowversion)
         [HttpPost("{id:int}/delete")] 
-        public ActionResult Delete([FromBody] Server server)
+        public ActionResult Delete([FromBody] Query query)
         {
-            if (server.Id == 0) return NotFound();
+            if (query.Id == 0) return NotFound();
             try {
                 //Op deze manier wordt ook de rowversion meegecheck
-                dataContext.Servers.Attach(server);
-                dataContext.Servers.Remove(server);
+                dataContext.Queries.Attach(query);
+                dataContext.Queries.Remove(query);
                 dataContext.SaveChanges(); 
                 return Ok();
             }
             catch (DbUpdateConcurrencyException)
             {
-                 return Conflict(UserMessages.Conflict(nameof(server)));
+                 return Conflict(UserMessages.Conflict(nameof(query)));
             }
         }
+
+
+
     }
 }

@@ -10,6 +10,7 @@ import { of } from "rxjs/observable/of";
 @Injectable()
 export class DataService {
   
+  
   constructor(private http: HttpClient) {
   }
 
@@ -17,7 +18,9 @@ export class DataService {
   private readonly queriesApi = '/api/queries/'
   private readonly syncsApi = '/api/syncs/';
 
-   getAllServers(): Observable<Server[]> {
+  /* Servers */
+
+  getAllServers(): Observable<Server[]> {
     return this.http.get(this.serversApi).pipe( map( (obj: Server[]) => obj.map( (s) => Object.assign(new Server(), s)) ));
   }
 
@@ -35,17 +38,27 @@ export class DataService {
     return this.http.post(this.serversApi + encodeURIComponent(''+server.id) + '/delete/', server);
   }
 
+  /* Queries */
+
   getAllQueries(): Observable<Query[]> {
-    return this.http.get(this.queriesApi) as Observable<Query[]>;
+    return this.http.get(this.queriesApi).pipe( map( (obj: Query[]) => obj.map( (s) => Object.assign(new Query(), s)) ));
   }
   
   getQuery(id: string) {
-    return this.http.get(this.queriesApi + encodeURIComponent(id)) as Observable<Query>;
+    if (id=='0') return of(new Query());
+    return this.http.get(this.queriesApi + encodeURIComponent(id))
+    .pipe(map( obj=> Object.assign(new Query(), obj) )) as Observable<Query>;
   }
 
   saveQuery(query: Query): Observable<any>{
     return this.http.post(this.queriesApi, query);
   }
+
+  deleteQuery(query: Query){
+    return this.http.post(this.queriesApi + encodeURIComponent(''+query.id) + '/delete/', query);
+  }
+
+  /* Syncs */
 
   getAllSyncs(): Observable<Sync[]> {
     return this.http.get(this.syncsApi) as Observable<Sync[]>;
@@ -57,6 +70,10 @@ export class DataService {
 
   saveSync(sync: Sync) {
     return this.http.post(this.syncsApi, sync);
+  }
+
+  deleteSync(sync: Sync){
+    return this.http.post(this.syncsApi + encodeURIComponent(''+sync.id) + '/delete/', sync);
   }
 
 }

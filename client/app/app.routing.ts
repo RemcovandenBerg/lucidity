@@ -15,6 +15,9 @@ import { ServerDetailsComponent } from './screens/servers/server-details/server-
 import { EditableServerDetailsComponent } from './screens/servers/editable-server-details/editable-server-details.component';
 import { DataResolver } from './data/DataResolver';
 import { ServersResolver } from './data/ServersResolver';
+import { QueriesResolver } from 'client/app/data/QueriesResolver';
+import { EditableQueryDetailsComponent } from 'client/app/screens/queries/editable-query-details/editable-query-details.component';
+import { QueryDetailsComponent } from './screens/queries/query-details/query-details.component';
 
 
 export const ROUTES: Routes = [
@@ -30,7 +33,14 @@ export const ROUTES: Routes = [
     ]
   },
 
-  { path: 'queries', component: QueriesComponent },
+  { path: 'queries', component: QueriesComponent,
+    resolve: { queries: QueriesResolver },
+    runGuardsAndResolvers: "always",
+    children: [
+      { path: 'details/:id', component: QueryDetailsComponent, resolve: { query: DataResolver } },
+      { path: 'details/:id/edit', component: EditableQueryDetailsComponent, resolve: { query: DataResolver } }
+    ]
+  },
   { path: 'syncs', component: SyncsComponent },
   { path: 'settings', component: LoginComponent }
 

@@ -28,7 +28,7 @@ export class EditableServerDetailsComponent {
 
     activatedRoute.data.subscribe( data => {
       this.server = data.server;
-      this.writeServerAndSetForm(this.server);
+      this.setForm(this.server);
     } );
   }
 
@@ -43,7 +43,7 @@ export class EditableServerDetailsComponent {
     });
   }
 
-  private writeServerAndSetForm(server: Server): void {
+  private setForm(server: Server): void {
     this.serverForm.setValue({
       id: server.id,
       hostname: server.hostname,
@@ -52,7 +52,6 @@ export class EditableServerDetailsComponent {
       portnumber: server.portnumber,
       rowVersion: server.rowVersion,
     });
-    this.server = server;
   }
 
   private readForm(): Server {
@@ -64,7 +63,10 @@ export class EditableServerDetailsComponent {
     this.server = this.readForm();
     this.service.saveServer(this.server).subscribe(
       () => {
+      if (this.server.id == 0)
         this.router.navigate(['servers']);
+      else
+        this.router.navigate(['servers', 'details', this.server.id]);
       }, (err) => {
         this.serverErrors = err;
       });

@@ -1,0 +1,32 @@
+<span *ngIf="!query" class="spinner spinner-inline fade in"></span>
+<ng-container *ngIf="query">
+  <h4 *ngIf="!query.name" class="edit-title">New query</h4>
+  <h4 *ngIf="query.name" class="edit-title">{{query.name}}</h4>
+  <form [formGroup]="queryForm">
+    <section class="form-block">
+      <input type="hidden" id="ff_id" formControlName="id">
+      <input type="hidden" id="ff_rowversion" formControlName="rowVersion">
+      <label>
+        <clr-icon shape="code"></clr-icon> Query</label>
+        <div class="form-group">
+          <label for="ff_database">Name</label>
+          <input type="text" id="ff_name" placeholder="descriptive name" formControlName="name">
+        </div>
+
+        <div class="form-group">
+          <label for="ff_database">Text</label>
+          <input type="text" id="ff_text" placeholder="SELECT col1, col3 FROM .." formControlName="text">
+        </div>
+      </section>
+
+    <section class="form-block">
+      <p class="query-errors fade in" *ngIf="queryErrors">{{queryErrors | json}}</p>
+    </section>
+  </form>
+
+  <section class="form-block">
+    <button type="button" class="btn btn-primary" (click)="onSave()">Save</button>
+    <button type="button" class="btn btn-secondary" (click)="onCancel()">Cancel</button>
+  </section>
+  
+</ng-container>
