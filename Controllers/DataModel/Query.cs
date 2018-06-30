@@ -13,7 +13,6 @@ public class Query
 
     [Timestamp]
     [ConcurrencyCheck]
-
     public byte[] RowVersion { get; set; }
 
 }

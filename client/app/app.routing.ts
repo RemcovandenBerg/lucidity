@@ -18,6 +18,9 @@ import { ServersResolver } from './data/ServersResolver';
 import { QueriesResolver } from 'client/app/data/QueriesResolver';
 import { EditableQueryDetailsComponent } from 'client/app/screens/queries/editable-query-details/editable-query-details.component';
 import { QueryDetailsComponent } from './screens/queries/query-details/query-details.component';
+import { SyncsResolver } from './data/SyncsResolver';
+import { EditableSyncDetailsComponent } from './screens/syncs/editable-sync-details/editable-sync-details.component';
+import { SyncDetailsComponent } from './screens/syncs/sync-details/sync-details.component';
 
 
 export const ROUTES: Routes = [
@@ -41,7 +44,14 @@ export const ROUTES: Routes = [
       { path: 'details/:id/edit', component: EditableQueryDetailsComponent, resolve: { query: DataResolver } }
     ]
   },
-  { path: 'syncs', component: SyncsComponent },
+  { path: 'syncs', component: SyncsComponent,
+    resolve: {syncs: SyncsResolver },
+    runGuardsAndResolvers: "always",
+    children: [
+      { path: 'details/:id', component: SyncDetailsComponent, resolve: { query: DataResolver } },
+      { path: 'details/:id/edit', component: EditableSyncDetailsComponent, resolve: { query: DataResolver } }
+    ]
+  },
   { path: 'settings', component: LoginComponent }
 
 

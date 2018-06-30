@@ -21,6 +21,6 @@ export class QueryDetailsComponent {
     this.dataService.deleteQuery(this.query).subscribe(
       () => this.router.navigate(['queries']),
       (err) => this.errors = err
-    )
+    );
   }
 }

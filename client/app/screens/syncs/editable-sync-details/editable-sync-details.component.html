@@ -1,0 +1,66 @@
+<span *ngIf="!sync" class="spinner spinner-inline fade in"></span>
+<ng-container *ngIf="sync">
+    <h4 *ngIf="!sync.name" class="edit-title">New database-sync</h4>
+    <h4 *ngIf="sync.name" class="edit-title">{{sync.name}}</h4>
+    <form [formGroup]="syncForm">
+        <section class="form-block">
+            <input type="hidden" id="ff_id" formControlName="id">
+            <input type="hidden" id="ff_rowversion" formControlName="rowVersion">
+           
+            <label>
+                <clr-icon shape="code"></clr-icon> Plan</label>
+            <div class="form-group">
+                <label class="required" for="ff_query">Query</label>
+                <div class="select">
+                    <select id="ff_query" formControlName="query">
+                        <option *ngFor="let qry of queries; index as i" [value]="i">{{qry}}</option>
+                    </select>
+                </div>
+            </div>
+
+            <label>
+                <clr-icon shape="storage"></clr-icon> DB-Servers</label>
+
+            <div class="form-group">
+                <label class="required" for="ff_source">Source</label>
+                <div class="select">
+                    <select id="ff_source" formControlName="source_server">
+                        <option *ngFor="let db of serverlist; index as i" [value]="i">{{db}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="required" for="ff_target">Target</label>
+                <div class="select">
+                    <select id="ff_target" formControlName="target_server">
+                        <option *ngFor="let db of serverlist; index as i" [value]="i">{{db}}</option>
+                    </select>
+                </div>
+            </div>
+
+       </section>
+
+        <section class="form-block">
+            <label>
+                <clr-icon shape="calendar"></clr-icon> Schedule</label>
+            <div class="form-group">
+                <label class="required" for="ff_cronschedule">Cronschedule</label>
+                <input type="text" id="ff_cronschedule" placeholder=" * * * " formControlName="cronschedule">
+            </div>
+            <div class="form-group">
+                <label class="required" for="ff_schedule_enabled">Enabled</label>
+                <input type="check" id="ff_schedule_enabled" formControlName="schedule_enabled">
+            </div>
+        </section>
+
+        <section class="form-block">
+            <p class="sync-errors fade in" *ngIf="syncErrors">{{syncErrors | json}}</p>
+        </section>
+    </form>
+
+    <section class="form-block">
+        <button type="button" class="btn btn-primary" (click)="onSave()">Save</button>
+        <button type="button" class="btn btn-secondary" (click)="onCancel()">Cancel</button>
+    </section>
+
+</ng-container>

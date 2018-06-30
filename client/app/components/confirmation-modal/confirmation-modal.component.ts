@@ -2,10 +2,8 @@ import { Component, EventEmitter, Input, Output } from "@angular/core";
 
 @Component({
     selector: "hb-confirmation-modal",
-    templateUrl: "./confirmation-modal.component.html",
-    //styleUrls: ["./editable-server-details.component.scss"]
+    templateUrl: "./confirmation-modal.component.html"
   })
-  
   export class ConfirmationModalComponent {
 
     @Input()

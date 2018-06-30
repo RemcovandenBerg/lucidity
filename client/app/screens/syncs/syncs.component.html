@@ -1,1 +1,13 @@
-nvme icon
+<div class="content-container">
+    <hb-crudlist
+        [entityName]="'Sync'"
+        [linkDescriptionPathProp]="'name'"
+        [navItems]="synclist"
+        [linkBasePath]="'details'"
+        [linkIdPathProp]="'id'"
+        [iconShape]="'nvme'">
+    </hb-crudlist>
+    <div class="content-area">
+       <router-outlet></router-outlet>
+    </div>
+</div>

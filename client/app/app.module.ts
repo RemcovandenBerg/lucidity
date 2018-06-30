@@ -22,6 +22,9 @@ import { QueryDetailsComponent } from "client/app/screens/queries/query-details/
 import { EditableQueryDetailsComponent } from "client/app/screens/queries/editable-query-details/editable-query-details.component";
 import { ROUTING } from "./app.routing";
 import { QueriesResolver } from "./data/QueriesResolver";
+import { SyncsResolver } from "client/app/data/SyncsResolver";
+import { SyncDetailsComponent } from "./screens/syncs/sync-details/sync-details.component";
+import { EditableSyncDetailsComponent } from "client/app/screens/syncs/editable-sync-details/editable-sync-details.component";
 
 @NgModule({
     declarations: [
@@ -36,6 +39,8 @@ import { QueriesResolver } from "./data/QueriesResolver";
         QueryDetailsComponent,
         EditableQueryDetailsComponent,
         SyncsComponent,
+        SyncDetailsComponent,
+        EditableSyncDetailsComponent,
         DashboardComponent,
         SettingsComponent
     ],
@@ -49,7 +54,7 @@ import { QueriesResolver } from "./data/QueriesResolver";
         ROUTING
         
     ],
-    providers: [DataService, DataResolver, ServersResolver, QueriesResolver],
+    providers: [DataService, DataResolver, ServersResolver, QueriesResolver, SyncsResolver],
     bootstrap: [AppComponent]
 })
 export class AppModule {

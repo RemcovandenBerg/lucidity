@@ -29,7 +29,7 @@ export class ServerDetailsComponent implements OnInit {
     this.dataService.deleteServer(server).subscribe(
       () => this.router.navigate(['servers']),
       (err) => this.errors = err
-    )
+    );
   }
 
   ngOnInit() {

@@ -1,17 +1,17 @@
-Roadmap:
-  - async await stuff
+Roadmap: 
   - scheduler (cron? hangfire? or background worker?)
-  - 
+  - implement Syncs (UI / data)
 
-For now:
- - Initial data filling with new EF-Core features
- - developing standardized CRUD components
-   
+Second:
+  - async await stuff
+  - unit testing
+  - Initial data filling with new EF-Core features
+  - developing standardized CRUD components
+    + Further separation of edit and details (routes + navigation)
     + transpose with `<ng-content></ng-content>`
-    - implement Queries
-    - implement Syncs
-    - 
 
- 
+Later:
+  - ui testing (protractor)
+
 Considered:
   - migrations (nope)
