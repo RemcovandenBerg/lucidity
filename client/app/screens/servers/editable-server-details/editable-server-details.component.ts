@@ -23,7 +23,7 @@ export class EditableServerDetailsComponent {
   public serverErrors: any;
 
   constructor(private service: DataService, private router: Router, activatedRoute: ActivatedRoute, fb: FormBuilder) {
- 
+
     this.serverForm = this.initForm(fb);
 
     activatedRoute.data.subscribe( data => {
@@ -63,7 +63,7 @@ export class EditableServerDetailsComponent {
     this.server = this.readForm();
     this.service.saveServer(this.server).subscribe(
       () => {
-      if (this.server.id == 0)
+      if (this.server.id === 0)
         this.router.navigate(['servers']);
       else
         this.router.navigate(['servers', 'details', this.server.id]);

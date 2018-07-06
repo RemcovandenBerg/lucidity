@@ -9,8 +9,8 @@ import { of } from "rxjs/observable/of";
 
 @Injectable()
 export class DataService {
-  
-  
+
+
   constructor(private http: HttpClient) {
   }
 
@@ -25,7 +25,7 @@ export class DataService {
   }
 
   getServer(id: string): Observable<Server> {
-    if (id=='0') return of(new Server());
+    if (id === '0') return of(new Server());
     return this.http.get(this.serversApi+ encodeURIComponent(id))
       .pipe(map( obj=> Object.assign(new Server(), obj) )) as Observable<Server>;
   }
@@ -33,7 +33,7 @@ export class DataService {
   saveServer(server: Server): Observable<any>{
     return this.http.post(this.serversApi, server);
   }
- 
+
   deleteServer(server: Server): Observable<any>{
     return this.http.post(this.serversApi + encodeURIComponent(''+server.id) + '/delete/', server);
   }
@@ -43,9 +43,9 @@ export class DataService {
   getAllQueries(): Observable<Query[]> {
     return this.http.get(this.queriesApi).pipe( map( (obj: Query[]) => obj.map( (s) => Object.assign(new Query(), s)) ));
   }
-  
+
   getQuery(id: string) {
-    if (id=='0') return of(new Query());
+    if (id === '0') return of(new Query());
     return this.http.get(this.queriesApi + encodeURIComponent(id))
     .pipe(map( obj=> Object.assign(new Query(), obj) )) as Observable<Query>;
   }
@@ -65,6 +65,7 @@ export class DataService {
   }
 
   getSync(id: string) {
+    if (id === '0') return of(new Sync());
     return this.http.get(this.syncsApi + encodeURIComponent(id)) as Observable<Sync>;
   }
 

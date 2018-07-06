@@ -11,18 +11,18 @@ import { Sync } from "client/app/models/Sync";
 })
 
 export class EditableSyncDetailsComponent implements OnInit {
-  
-  
+
+
   public sync: Sync = null;
   public syncForm: FormGroup;
 
   // options list
-  
+
 
   public serverErrors: any;
 
   constructor(private service: DataService, private router: Router, activatedRoute: ActivatedRoute, fb: FormBuilder) {
- 
+
     this.syncForm = this.initForm(fb);
 
     activatedRoute.data.subscribe( data => {
@@ -34,21 +34,24 @@ export class EditableSyncDetailsComponent implements OnInit {
   private initForm(fb: FormBuilder): any {
     return fb.group({
       id: 0,
-      hostname: ['', Validators.required],
-      portnumber: [1433, Validators.required],
-      database: ['', Validators.required],
+      query: [null, Validators.required],
+      source_server: [null, Validators.required],
+      target_server: [null, Validators.required],
+      cronschedule: '',
+      schedule_enabled: [false, Validators.required],
       rowVersion: '',
     });
   }
 
   private setForm(sync: Sync): void {
     this.syncForm.setValue({
-      id: sync.id,
-      // hostname: server.hostname,
-      // database: server.database,
-      // type: server.type,
-      // portnumber: server.portnumber,
-      rowVersion: sync.rowVersion,
+        id: sync.id,
+        query: sync.query,
+        source_server: sync.sourceServer,
+        target_server: sync.targetServer,
+        cronschedule: sync.cronSchedule,
+        schedule_enabled: sync.isScheduleEnabled,
+        rowVersion : sync.rowVersion,
     });
   }
 

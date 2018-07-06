@@ -1,6 +1,6 @@
 <span *ngIf="!server" class="spinner spinner-inline fade in"></span>
-<ng-container *ngIf="server">
-        <h4 class="details-title">{{server.name}}</h4>
+<ng-container *ngIf="sync">
+        <h4 class="details-title">{{sync.query.name}}</h4>
     <form>
         <section class="form-block">
         <label>
@@ -15,11 +15,11 @@
                 <clr-icon shape="storage"></clr-icon> DB-Servers</label>
             <div class="form-group">
                 <label>Source</label>
-                <input type="text" size="35" readonly [attr.value]="sync.sourceserver.name">
+                <input type="text" size="35" readonly [attr.value]="sync.sourceServer.name">
             </div>
             <div class="form-group">
                 <label>Target</label>
-                <input type="text" size="35" readonly [attr.value]="sync.targetserver.name">
+                <input type="text" size="35" readonly [attr.value]="sync.targetServer.name">
             </div>
         </section>
 
@@ -28,7 +28,7 @@
                 <clr-icon shape="calendar"></clr-icon> Schedule</label>
             <div class="form-group">
                 <label>Cron</label>
-                <input type="text" size="35" readonly [attr.value]="sync.cronschedule">
+                <input type="text" size="35" readonly [attr.value]="sync.cronSchedule">
             </div>
 
             <div class="form-group">
@@ -45,6 +45,6 @@
 
         <hb-confirmation-modal [open]="confirm" (onCancel)="confirm=false" (onConfirm)="delete(); confirm = false;"></hb-confirmation-modal>
         <p>{{errors | json}}</p>
-  
+
     </form>
 </ng-container>

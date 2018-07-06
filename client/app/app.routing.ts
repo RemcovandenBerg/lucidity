@@ -48,8 +48,8 @@ export const ROUTES: Routes = [
     resolve: {syncs: SyncsResolver },
     runGuardsAndResolvers: "always",
     children: [
-      { path: 'details/:id', component: SyncDetailsComponent, resolve: { query: DataResolver } },
-      { path: 'details/:id/edit', component: EditableSyncDetailsComponent, resolve: { query: DataResolver } }
+      { path: 'details/:id', component: SyncDetailsComponent, resolve: { sync: DataResolver } },
+      { path: 'details/:id/edit', component: EditableSyncDetailsComponent, resolve: { sync: DataResolver } }
     ]
   },
   { path: 'settings', component: LoginComponent }

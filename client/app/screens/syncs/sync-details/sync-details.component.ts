@@ -10,14 +10,15 @@ import { DataService } from "client/app/data/data.service";
 })
 
 export class SyncDetailsComponent {
-  
+
   sync: Sync;
   errors: any;
+  confirm: boolean;
 
   constructor(activatedRoute: ActivatedRoute, private dataService: DataService, private router: Router) {
-    
-      activatedRoute.data.subscribe( data => { 
-        this.sync = data.sync; 
+
+      activatedRoute.data.subscribe( data => {
+        this.sync = data.sync;
       } );
   }
 
