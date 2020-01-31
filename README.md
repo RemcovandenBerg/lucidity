@@ -1,4 +1,4 @@
-![Hostbeter.nl](https://hostbeter.nl/debetereplaatjes/logo_web.png =250x250)
+<img src="https://hostbeter.nl/debetereplaatjes/logo_web.png" height="80">
 
 Lucidity
 ============
